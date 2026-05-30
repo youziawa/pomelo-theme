@@ -1,0 +1,14 @@
+<div class="pt-page-header">
+  <h1 class="pt-page-header__title"><%= __('categories') %></h1>
+</div>
+
+<div class="pt-category-list">
+  <% site.categories.each(function(cat){ %>
+    <div class="pt-glass pt-glass--card" style="padding:24px;border-radius:12px;margin-bottom:16px;">
+      <h3 style="margin-bottom:8px;">
+        <a href="<%= url_for(cat.path) %>" style="color:#00FFC8;"><%= cat.name %></a>
+        <span style="color:#9A9AB0;font-size:0.875rem;margin-left:8px;">(<%= cat.posts.length %>)</span>
+      </h3>
+    </div>
+  <% }) %>
+</div>

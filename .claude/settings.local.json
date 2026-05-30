@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npx hexo *)",
+      "Bash(cp -r /tmp/tmp.XcmPbFcO3Q/test-site/* \"/D/Project/pomelo-theme/\")",
+      "Bash(cp /tmp/tmp.XcmPbFcO3Q/test-site/.gitignore \"/D/Project/pomelo-theme/\")",
+      "Bash(cp /tmp/tmp.XcmPbFcO3Q/test-site/.npmrc \"/D/Project/pomelo-theme/\")",
+      "Bash(npm install *)",
+      "Bash(gh --version)",
+      "Bash(git --version)"
+    ]
+  }
+}

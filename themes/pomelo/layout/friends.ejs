@@ -1,0 +1,21 @@
+<div class="pt-page-header">
+  <h1 class="pt-page-header__title"><%= __('friends') %></h1>
+</div>
+
+<div class="pt-friends-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;">
+  <% if (theme.friends && theme.friends.length) { %>
+    <% theme.friends.forEach(function(friend){ %>
+      <a class="pt-friend-card pt-glass pt-glass--card pt-glass--interactive" href="<%= friend.url %>" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:16px;border-radius:12px;text-decoration:none;color:inherit;">
+        <img src="<%= friend.avatar %>" alt="<%= friend.name %>" width="48" height="48" style="border-radius:50%;" loading="lazy">
+        <div>
+          <div style="font-weight:600;"><%= friend.name %></div>
+          <% if (friend.description) { %>
+            <div style="font-size:0.75rem;color:#9A9AB0;"><%= friend.description %></div>
+          <% } %>
+        </div>
+      </a>
+    <% }) %>
+  <% } else { %>
+    <p style="color:#9A9AB0;"><%= __('no_posts') %></p>
+  <% } %>
+</div>

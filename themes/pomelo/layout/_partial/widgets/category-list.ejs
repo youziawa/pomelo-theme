@@ -1,0 +1,13 @@
+<div class="pt-widget pt-glass pt-glass--card pt-widget--categories">
+  <h3 class="pt-widget__title"><%= __('widget.categories') %></h3>
+  <ul class="pt-widget__list">
+    <% site.categories.each(function(cat){ %>
+      <li>
+        <a href="<%= url_for(cat.path) %>">
+          <span><%= cat.name %></span>
+          <span class="pt-widget__count"><%= cat.posts.length %></span>
+        </a>
+      </li>
+    <% }) %>
+  </ul>
+</div>

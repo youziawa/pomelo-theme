@@ -1,0 +1,168 @@
+// ===================================
+// Pomelo Theme — CSS Reset & Base
+// ===================================
+@import '_variables'
+
+// ── Box Sizing ──
+*,
+*::before,
+*::after
+  box-sizing: border-box
+  margin: 0
+  padding: 0
+
+// ── HTML / Body ──
+html
+  font-size: $font-base
+  -webkit-text-size-adjust: 100%
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  scroll-behavior: smooth
+
+body
+  font-family: $font-body
+  font-size: $font-scale-base
+  line-height: $line-height-body
+  color: $clr-text
+  background: $clr-bg
+  min-height: 100vh
+  overflow-x: hidden
+  neon-scrollbar($clr-primary)
+
+// ── Grid & Scanline Background ──
+body.has-grid
+  grid-background(40px, 0.03)
+
+body.has-noise
+  position: relative
+  &::after
+    content: ""
+    position: fixed
+    inset: 0
+    pointer-events: none
+    z-index: 9999
+    opacity: 0.02
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.8'/%3E%3C/svg%3E")
+
+body.has-scanline
+  &::before
+    content: ""
+    position: fixed
+    inset: 0
+    pointer-events: none
+    z-index: 9998
+    opacity: 0.04
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.5) 2px, rgba(0,0,0,0.5) 4px)
+
+// ── Typography ──
+h1, h2, h3, h4, h5, h6
+  font-weight: $font-wt-semibold
+  line-height: $line-height-heading
+  color: $clr-text
+
+h1
+  font-size: $font-scale-xl
+  font-weight: $font-wt-bold
+
+h2
+  font-size: $font-scale-lg
+
+h3
+  font-size: $font-scale-md
+
+h4
+  font-size: $font-scale-base
+  font-weight: $font-wt-medium
+
+p
+  margin-bottom: 1em
+
+a
+  color: $clr-primary
+  text-decoration: none
+  transition: color $transition-fast
+  &:hover
+    color: $clr-accent
+    text-decoration: underline
+
+img
+  max-width: 100%
+  height: auto
+  vertical-align: middle
+
+// ── Lists ──
+ul, ol
+  list-style: none
+
+// ── Code (inline) ──
+code
+  font-family: $font-code
+  font-size: 0.875em
+  padding: 0.15em 0.4em
+  border-radius: $radius-sm
+  background: rgba(0, 255, 200, 0.08)
+  color: $clr-primary
+  font-feature-settings: "liga" 1
+
+// ── Pre / Code Block ──
+pre
+  font-family: $font-code
+  font-size: $font-scale-sm
+  line-height: $line-height-code
+  overflow-x: auto
+  border-radius: $radius-lg
+  margin: $space-md 0
+  font-feature-settings: "liga" 1
+
+// ── Blockquote ──
+blockquote
+  margin: $space-md 0
+  padding: $space-md $space-lg
+  border-left: 3px solid $clr-primary
+  background: rgba(0, 255, 200, 0.04)
+  border-radius: 0 $radius-md $radius-md 0
+  p:last-child
+    margin-bottom: 0
+
+// ── Horizontal Rule ──
+hr
+  border: none
+  border-top: 1px solid rgba(255, 255, 255, 0.06)
+  margin: $space-xl 0
+
+// ── Table ──
+table
+  width: 100%
+  border-collapse: collapse
+  margin: $space-md 0
+
+th, td
+  padding: $space-sm $space-md
+  text-align: left
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06)
+
+th
+  font-weight: $font-wt-semibold
+  color: $clr-primary
+
+// ── Selection ──
+::selection
+  background: rgba(0, 255, 200, 0.25)
+  color: $clr-text
+
+::-moz-selection
+  background: rgba(0, 255, 200, 0.25)
+  color: $clr-text
+
+// ── Focus ──
+:focus-visible
+  focus-ring()
+
+// ── Reduced Motion ──
+@media (prefers-reduced-motion: reduce)
+  *,
+  *::before,
+  *::after
+    animation-duration: 0.01ms !important
+    animation-iteration-count: 1 !important
+    transition-duration: 0.01ms !important

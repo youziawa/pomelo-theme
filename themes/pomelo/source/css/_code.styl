@@ -1,0 +1,111 @@
+// ===================================
+// Pomelo Theme — Code Block (Terminal Style)
+// ===================================
+@import '_variables'
+@import '_acrylic'
+
+.pt-post__content
+  pre, .highlight
+    position: relative
+    margin: $space-lg 0
+    border-radius: $radius-lg
+    overflow: hidden
+    acrylic-card()
+    acrylic-tint-terminal()
+    acrylic-edge-highlight()
+    border-top: 1px solid rgba(255, 255, 255, 0.08)
+
+    // macOS three dots
+    &::before
+      content: ""
+      display: block
+      height: 28px
+      background: rgba(8, 8, 15, 0.5)
+      padding: $space-sm $space-md
+      // Three dots via box-shadows
+      background-image:
+        radial-gradient(circle, #FF5F57 6px, transparent 6px),
+        radial-gradient(circle, #FEBC2E 6px, transparent 6px),
+        radial-gradient(circle, #28C840 6px, transparent 6px)
+      background-size: 12px 12px
+      background-position: 8px center, 28px center, 48px center
+      background-repeat: no-repeat
+
+    // Language label (shown after dots)
+    .code-lang
+      position: absolute
+      top: 7px
+      right: $space-md
+      font-size: 11px
+      color: $clr-text-disabled
+      font-family: $font-code
+      z-index: 1
+
+    // Code content
+    .code, pre, code
+      display: block
+      padding: $space-md $space-lg
+      overflow-x: auto
+      font-family: $font-code
+      font-size: 14px
+      line-height: $line-height-code
+      color: $clr-text
+      background: transparent
+
+    // Line numbers via CSS counters
+    table
+      margin: 0
+      border-collapse: collapse
+
+    .gutter
+      width: 3em
+      padding-right: $space-md
+      text-align: right
+      user-select: none
+      color: $clr-text-disabled
+      font-size: $font-scale-xs
+      border-right: 1px solid rgba(255, 255, 255, 0.06)
+
+    .code
+      padding-left: $space-md
+
+// Copy button
+.code-copy-btn
+  position: absolute
+  top: 4px
+  right: $space-xl
+  padding: 3px $space-sm
+  font-size: 11px
+  color: $clr-text-secondary
+  background: rgba(255, 255, 255, 0.06)
+  border: 1px solid rgba(255, 255, 255, 0.08)
+  border-radius: $radius-sm
+  cursor: pointer
+  opacity: 0
+  transition: all $transition-fast
+  z-index: 1
+  font-family: $font-body
+
+  .highlight:hover &
+    opacity: 1
+
+  &:hover
+    background: rgba(255, 255, 255, 0.12)
+    color: $clr-text
+
+  &.copied
+    color: $clr-primary
+    border-color: rgba(0, 255, 200, 0.3)
+    background: rgba(0, 255, 200, 0.1)
+
+// Inline code in content
+.pt-post__content
+  code:not(pre code)
+    font-family: $font-code
+    font-size: 0.875em
+    padding: 0.15em 0.5em
+    border-radius: $radius-sm
+    background: rgba(0, 255, 200, 0.08)
+    color: $clr-primary
+    font-feature-settings: "liga" 1
+    border: 1px solid rgba(0, 255, 200, 0.1)

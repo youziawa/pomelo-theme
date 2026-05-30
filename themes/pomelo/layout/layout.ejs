@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="<%= config.language %>">
+<head>
+  <%- partial('_partial/head', { page: page, config: config, theme: theme }) %>
+</head>
+<body class="<%= theme.effects ? (theme.effects.grid_lines ? 'has-grid' : '') : '' %> <%= theme.effects && theme.effects.noise_bg ? 'has-noise' : '' %> <%= theme.effects && theme.effects.scanline ? 'has-scanline' : '' %>">
+  <div class="pt-site">
+    <%- partial('_partial/header', { config: config, theme: theme }) %>
+
+    <main class="pt-main">
+      <%- body %>
+    </main>
+
+    <%- partial('_partial/footer', { config: config, theme: theme }) %>
+  </div>
+
+  <!-- Theme JS -->
+  <%- js('js/main') %>
+
+  <%- partial('_partial/after_body', { config: config, theme: theme }) %>
+</body>
+</html>

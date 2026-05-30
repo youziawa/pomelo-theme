@@ -1,0 +1,132 @@
+# ──────────────────────────────────────
+# Pomelo Theme Configuration
+# ──────────────────────────────────────
+
+# ── 基础信息 ──
+avatar: /images/avatar.png
+favicon: /images/favicon.ico
+logo: /images/logo.svg
+
+# ── 色彩主题 ──
+theme_color:
+  primary: "#00FFC8"
+  accent: "#FF0088"
+  highlight: "#FFD700"
+  terminal_green: "#00FF41"
+  background: "#08080F"
+  text: "#D8D8E0"
+  text_secondary: "#9A9AB0"
+  acrylic_tint: cyber
+
+# ── 亚克力材质 ──
+acrylic:
+  card_blur: 20
+  header_blur: 28
+  modal_blur: 48
+  card_opacity: 0.55
+  header_opacity: 0.70
+  saturation: 130
+  noise_texture: true
+  edge_highlight: true
+
+# ── 视觉效果 ──
+effects:
+  particles: true
+  grid_lines: true
+  scanline: true
+  neon_cursor: true
+  neon_glow: true
+  typing_effect: true
+  glassmorphism: true
+  sakura_fall: false
+  noise_bg: true
+
+# ── 导航 ──
+menu:
+  Home: /
+  Archives: /archives/
+  Categories: /categories/
+  Tags: /tags/
+  Friends: /friends/
+  Gallery: /gallery/
+  About: /about/
+
+# ── 侧边栏 ──
+sidebar:
+  position: right
+  widgets:
+    - github-status
+    - recent-posts
+    - tag-cloud
+    - category-list
+
+# ── GitHub 状态 ──
+github:
+  username: your_github_username
+  show_pinned: true
+  show_heatmap: true
+  cache_time: 3600
+
+# ── 相册 ──
+gallery:
+  enable: true
+  title: 相册
+  layout: masonry
+  images: []
+
+# ── 友链 ──
+friends: []
+
+# ── 评论系统 ──
+comments:
+  enable: false
+  type: waline
+  waline:
+    serverURL: ""
+
+# ── 代码高亮 ──
+code_highlight:
+  theme: neon
+  line_number: true
+  copy_button: true
+  lang_label: true
+  mac_style: true
+
+# ── 文章设置 ──
+post:
+  toc: true
+  copyright: true
+  related_posts: true
+  reading_time: true
+  word_count: true
+
+# ── 二次元模块 ──
+anime:
+  live2d: false
+  live2d_model: ""
+  random_bg: false
+  bg_source: local
+  hitokoto: true
+  ow_emoji: false
+
+# ── 页脚 ──
+footer:
+  since: 2024
+  icp: ""
+  powered_by: true
+  theme_name: true
+  runtime: true
+
+# ── CDN / 性能 ──
+cdn:
+  enable: false
+  base_url: ""
+
+pjax:
+  enable: false
+
+# ── 自定义注入 ──
+custom:
+  css: ""
+  js: ""
+  head: ""

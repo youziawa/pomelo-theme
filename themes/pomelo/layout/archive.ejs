@@ -1,0 +1,35 @@
+<div class="pt-archive pt-layout pt-layout--right-sidebar">
+  <div class="pt-layout__content">
+    <div class="pt-page-header">
+      <h1 class="pt-page-header__title"><%= __('archives') %></h1>
+      <% if (page.total) { %>
+        <p class="pt-page-header__subtitle"><%= page.total %> posts</p>
+      <% } %>
+    </div>
+
+    <div class="pt-timeline">
+      <% let currentYear = ''; %>
+      <% page.posts.each(function(post){ %>
+        <% const postYear = date(post.date, 'YYYY'); %>
+        <% if (postYear !== currentYear) { currentYear = postYear; %>
+          <div class="pt-timeline__year">
+            <span><%= currentYear %></span>
+          </div>
+        <% } %>
+
+        <div class="pt-timeline__item">
+          <time class="pt-timeline__date" datetime="<%= date(post.date, 'YYYY-MM-DD') %>">
+            <%= date(post.date, 'MM-DD') %>
+          </time>
+          <a class="pt-timeline__title" href="<%= url_for(post.path) %>"><%= post.title %></a>
+        </div>
+      <% }) %>
+    </div>
+
+    <%- partial('_partial/pagination', { page: page }) %>
+  </div>
+
+  <aside class="pt-layout__sidebar">
+    <%- partial('_partial/sidebar', { config: config, theme: theme, site: site }) %>
+  </aside>
+</div>

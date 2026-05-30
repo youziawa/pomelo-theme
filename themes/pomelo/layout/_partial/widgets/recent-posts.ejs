@@ -1,0 +1,13 @@
+<div class="pt-widget pt-glass pt-glass--card pt-widget--recent">
+  <h3 class="pt-widget__title"><%= __('widget.recent_posts') %></h3>
+  <ul class="pt-widget__list">
+    <% site.posts.sort('date', -1).limit(5).each(function(post){ %>
+      <li>
+        <a href="<%= url_for(post.path) %>">
+          <span class="pt-widget__post-title"><%= post.title %></span>
+          <time class="pt-text-xs" datetime="<%= date(post.date, 'YYYY-MM-DD') %>"><%= date(post.date, 'YYYY-MM-DD') %></time>
+        </a>
+      </li>
+    <% }) %>
+  </ul>
+</div>

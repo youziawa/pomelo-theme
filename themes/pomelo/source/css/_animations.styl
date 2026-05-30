@@ -1,0 +1,76 @@
+// ===================================
+// Pomelo Theme — Animations
+// ===================================
+@import '_variables'
+
+// ── Keyframes ──
+@keyframes ptFadeInUp
+  from
+    opacity: 0
+    transform: translateY(20px)
+  to
+    opacity: 1
+    transform: translateY(0)
+
+@keyframes ptFadeIn
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+@keyframes ptPulse
+  0%, 100%
+    opacity: 1
+  50%
+    opacity: 0.5
+
+@keyframes ptGlowPulse
+  0%, 100%
+    box-shadow: $glow-cyan-sm
+  50%
+    box-shadow: $glow-cyan-md
+
+@keyframes ptTyping
+  from
+    width: 0
+  to
+    width: 100%
+
+@keyframes ptCursorBlink
+  0%, 100%
+    border-right-color: $clr-primary
+  50%
+    border-right-color: transparent
+
+@keyframes ptScanline
+  0%
+    transform: translateY(0)
+  100%
+    transform: translateY(4px)
+
+// ── Utility Animation Classes ──
+.pt-animate-in
+  animation: ptFadeInUp 0.5s ease both
+
+.pt-animate-pulse
+  animation: ptPulse 2s ease-in-out infinite
+
+.pt-animate-glow
+  animation: ptGlowPulse 3s ease-in-out infinite
+
+// ── Typing Effect ──
+.pt-typewriter
+  display: inline-block
+  overflow: hidden
+  white-space: nowrap
+  border-right: 2px solid $clr-primary
+  animation: ptTyping 2s steps(30) 0.5s both, ptCursorBlink 0.75s step-end infinite
+  max-width: max-content
+
+// ── Scan line animation ──
+body.has-scanline::before
+  animation: ptScanline 0.1s linear infinite
+
+// ── Page Transition (opt-in) ──
+.pt-page-transition
+  animation: ptFadeIn 0.3s ease

@@ -1,0 +1,32 @@
+<header class="pt-header pt-glass pt-glass--header">
+  <div class="pt-header__inner">
+    <!-- Logo / Site Title -->
+    <a class="pt-header__logo" href="<%= url_for('/') %>">
+      <% if (theme.logo) { %>
+        <img src="<%= url_for(theme.logo) %>" alt="<%= config.title %>" height="32">
+      <% } %>
+      <span class="pt-header__title"><%= config.title %></span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="pt-nav" aria-label="Main navigation">
+      <% for (const [name, path] of Object.entries(theme.menu || {})) { %>
+        <a class="pt-nav__link" href="<%= url_for(path) %>"><%= name %></a>
+      <% } %>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button class="pt-header__menu-btn" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Navigation (hidden by default) -->
+<nav class="pt-mobile-nav" aria-hidden="true">
+  <% for (const [name, path] of Object.entries(theme.menu || {})) { %>
+    <a class="pt-mobile-nav__link" href="<%= url_for(path) %>"><%= name %></a>
+  <% } %>
+</nav>

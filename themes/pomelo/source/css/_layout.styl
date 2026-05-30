@@ -1,0 +1,86 @@
+// ===================================
+// Pomelo Theme — Layout System
+// ===================================
+@import '_variables'
+@import '_acrylic'
+
+// ── Site Wrapper ──
+.pt-site
+  display: flex
+  flex-direction: column
+  min-height: 100vh
+
+// ── Main Content Area ──
+.pt-main
+  flex: 1
+  container()
+  padding-top: "calc(%s + %s)" % ($header-height $space-xl)
+  padding-bottom: $space-3xl
+
+// ── Two-Column Layout (main + sidebar) ──
+.pt-layout
+  display: flex
+  gap: $space-xl
+  margin-top: $space-lg
+
+  &--right-sidebar
+    flex-direction: row
+
+  &--left-sidebar
+    flex-direction: row-reverse
+
+.pt-layout__content
+  flex: 1
+  min-width: 0  // prevent flex item overflow
+
+.pt-layout__sidebar
+  width: $sidebar-width
+  flex-shrink: 0
+
+  mq-tablet()
+    display: none
+
+// ── Page Header (archive/category/tag title) ──
+.pt-page-header
+  margin-bottom: $space-xl
+  text-align: center
+
+  &__title
+    font-size: $font-scale-lg
+    font-weight: $font-wt-bold
+    neon-text($clr-primary)
+
+  &__subtitle
+    font-size: $font-scale-sm
+    color: $clr-text-secondary
+    margin-top: $space-xs
+
+// ── Card Grid ──
+.pt-card-grid
+  display: grid
+  grid-template-columns: 1fr
+  gap: $space-lg
+
+// ── Responsive ──
+mq-tablet()
+  .pt-main
+    padding-top: "calc(%s + %s)" % ($header-height $space-lg)
+    padding-left: $space-md
+    padding-right: $space-md
+
+  .pt-layout
+    flex-direction: column
+    gap: $space-lg
+
+  .pt-layout__sidebar
+    display: block
+    width: 100%
+
+mq-mobile()
+  .pt-main
+    padding-top: "calc(%s + %s)" % ($header-height $space-md)
+    padding-left: $space-sm
+    padding-right: $space-sm
+
+  .pt-page-header__title
+    font-size: $font-scale-md

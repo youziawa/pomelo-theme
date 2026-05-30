@@ -1,0 +1,18 @@
+<% if (theme.sidebar && theme.sidebar.widgets) {
+  theme.sidebar.widgets.forEach(function(widget) {
+    switch(widget) {
+      case 'github-status': %>
+        <%- partial('_partial/widgets/github-status', { theme: theme }) %>
+      <% break;
+      case 'recent-posts': %>
+        <%- partial('_partial/widgets/recent-posts', { site: site }) %>
+      <% break;
+      case 'tag-cloud': %>
+        <%- partial('_partial/widgets/tag-cloud', { site: site }) %>
+      <% break;
+      case 'category-list': %>
+        <%- partial('_partial/widgets/category-list', { site: site }) %>
+      <% break;
+    }
+  });
+} %>

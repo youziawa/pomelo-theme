@@ -1,0 +1,29 @@
+home: Home
+archives: Archives
+categories: Categories
+tags: Tags
+friends: Friends
+about: About
+gallery: Gallery
+search: Search
+prev: Previous
+next: Next
+copyright: Copyright
+toc: Table of Contents
+read_more: Read More
+min_read: min read
+updated: Updated
+posted: Posted
+back_to_top: Back to Top
+
+github:
+  placeholder: Configure GitHub username to display status
+
+widget:
+  recent_posts: Recent Posts
+  tag_cloud: Tag Cloud
+  categories: Categories
+  github: GitHub Status
+
+comment: Comments
+no_posts: No posts yet

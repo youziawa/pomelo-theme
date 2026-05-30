@@ -1,0 +1,55 @@
+// ===================================
+// Pomelo Theme — Sidebar & Widgets
+// ===================================
+@import '_variables'
+@import '_acrylic'
+
+.pt-widget
+  margin-bottom: $space-lg
+  padding: $space-lg
+  border-radius: $radius-lg
+  acrylic-card()
+  acrylic-edge-highlight()
+  position: relative
+  acrylic-noise()
+
+  &__title
+    font-size: $font-scale-base
+    font-weight: $font-wt-semibold
+    margin-bottom: $space-md
+    padding-bottom: $space-sm
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06)
+    color: $clr-primary
+    neon-text($clr-primary)
+
+  &__list
+    display: flex
+    flex-direction: column
+    gap: $space-sm
+
+    li a
+      display: flex
+      justify-content: space-between
+      align-items: center
+      padding: $space-xs 0
+      color: $clr-text-secondary
+      text-decoration: none
+      font-size: $font-scale-sm
+      transition: color $transition-fast
+
+      &:hover
+        color: $clr-primary
+        text-decoration: none
+
+  &__post-title
+    text-ellipsis()
+    flex: 1
+
+  &__count
+    font-size: $font-scale-xs
+    color: $clr-text-disabled
+    background: rgba(255, 255, 255, 0.05)
+    padding: 1px $space-xs
+    border-radius: $radius-sm
+    flex-shrink: 0
+    margin-left: $space-sm

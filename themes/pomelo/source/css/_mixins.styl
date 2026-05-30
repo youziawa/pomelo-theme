@@ -1,0 +1,106 @@
+// ===================================
+// Pomelo Theme — Mixins
+// ===================================
+@import '_variables'
+
+// ── Media Queries ──
+mq-mobile()
+  @media (max-width: $bp-mobile)
+    {block}
+
+mq-tablet()
+  @media (max-width: $bp-tablet)
+    {block}
+
+mq-tablet-up()
+  @media (min-width: $bp-tablet + 1)
+    {block}
+
+mq-desktop()
+  @media (min-width: $bp-desktop)
+    {block}
+
+mq-wide()
+  @media (min-width: $bp-wide)
+    {block}
+
+// ── Container ──
+container()
+  max-width: $max-width-site
+  margin: 0 auto
+  padding: 0 $space-lg
+
+// ── Content Width ──
+content-width()
+  max-width: $max-width-content
+  margin: 0 auto
+
+// ── Flex Helpers ──
+flex-center()
+  display: flex
+  align-items: center
+  justify-content: center
+
+flex-between()
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+// ── Text Truncate ──
+text-ellipsis()
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+// ── Neon Glow Text ──
+neon-text($color = $clr-primary)
+  text-shadow: 0 0 7px rgba($color, 0.5), 0 0 20px rgba($color, 0.2)
+
+neon-text-strong($color = $clr-primary)
+  text-shadow: 0 0 10px rgba($color, 0.6), 0 0 40px rgba($color, 0.3), 0 0 80px rgba($color, 0.1)
+
+// ── Neon Border ──
+neon-border($color = $clr-primary, $intensity = 'md')
+  if $intensity == 'sm'
+    box-shadow: 0 0 4px rgba($color, 0.3), inset 0 0 4px rgba($color, 0.1)
+  else if $intensity == 'md'
+    box-shadow: 0 0 8px rgba($color, 0.35), 0 0 30px rgba($color, 0.1)
+  else
+    box-shadow: 0 0 15px rgba($color, 0.4), 0 0 50px rgba($color, 0.2), 0 0 100px rgba($color, 0.05)
+
+// ── Focus Ring ──
+focus-ring($color = $clr-primary)
+  outline: none
+  box-shadow: 0 0 0 2px rgba($color, 0.4)
+
+// ── Hide Scrollbar ──
+hide-scrollbar()
+  -ms-overflow-style: none
+  scrollbar-width: none
+  &::-webkit-scrollbar
+    display: none
+
+// ── Custom Scrollbar (Neon) ──
+neon-scrollbar($thumb-color = $clr-primary)
+  &::-webkit-scrollbar
+    width: 4px
+    height: 4px
+  &::-webkit-scrollbar-track
+    background: transparent
+  &::-webkit-scrollbar-thumb
+    background: rgba($thumb-color, 0.3)
+    border-radius: 2px
+    &:hover
+      background: rgba($thumb-color, 0.6)
+
+// ── Visually Hidden (accessible) ──
+sr-only()
+  position: absolute
+  width: 1px
+  height: 1px
+  padding: 0
+  margin: -1px
+  overflow: hidden
+  clip: rect(0, 0, 0, 0)
+  white-space: nowrap
+  border: 0

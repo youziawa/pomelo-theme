@@ -1,0 +1,102 @@
+// ===================================
+// Pomelo Theme — Typography System
+// ===================================
+@import '_variables'
+
+// ── Type Scale Classes ──
+.pt-text-xs
+  font-size: $font-scale-xs
+  color: $clr-text-secondary
+
+.pt-text-sm
+  font-size: $font-scale-sm
+
+.pt-text-base
+  font-size: $font-scale-base
+
+.pt-text-md
+  font-size: $font-scale-md
+
+.pt-text-lg
+  font-size: $font-scale-lg
+
+.pt-text-xl
+  font-size: $font-scale-xl
+
+// ── Article Content Typography ──
+.pt-post__content
+  content-width()
+
+  h1
+    font-size: $font-scale-lg
+    margin: $space-xl 0 $space-md
+    padding-bottom: $space-sm
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06)
+
+  h2
+    font-size: $font-scale-md
+    margin: $space-lg 0 $space-md
+
+  h3
+    font-size: $font-scale-base
+    font-weight: $font-wt-semibold
+    margin: $space-lg 0 $space-sm
+
+  p
+    margin-bottom: 1em
+
+  ul, ol
+    margin: $space-sm 0 $space-md
+    padding-left: $space-lg
+
+  ul
+    list-style: disc
+    & ul
+      list-style: circle
+
+  ol
+    list-style: decimal
+
+  li
+    margin-bottom: $space-xs
+
+  strong
+    font-weight: $font-wt-semibold
+    color: $clr-text
+
+  em
+    font-style: italic
+
+  del
+    color: $clr-text-secondary
+
+  // Inline links within post content
+  a
+    color: $clr-primary
+    text-decoration: underline
+    text-decoration-color: rgba(0, 255, 200, 0.3)
+    text-underline-offset: 3px
+    &:hover
+      text-decoration-color: $clr-primary
+      color: $clr-primary
+
+  // Images in posts
+  img
+    display: block
+    margin: $space-lg auto
+    border-radius: $radius-md
+
+  // Keyboard shortcuts
+  kbd
+    font-family: $font-code
+    font-size: 0.85em
+    padding: 0.15em 0.5em
+    background: rgba(255, 255, 255, 0.06)
+    border: 1px solid rgba(255, 255, 255, 0.1)
+    border-radius: $radius-sm
+    border-bottom-width: 2px
+
+  // Footnotes
+  .footnote
+    font-size: $font-scale-sm
+    color: $clr-text-secondary

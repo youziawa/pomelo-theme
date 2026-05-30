@@ -1,0 +1,29 @@
+<footer class="pt-footer">
+  <div class="pt-footer__inner">
+    <div class="pt-footer__brand">
+      <span class="pt-footer__title"><%= config.title %></span>
+      <% if (config.description) { %>
+        <p class="pt-footer__desc"><%= config.description %></p>
+      <% } %>
+    </div>
+
+    <div class="pt-footer__links">
+      <% if (theme.footer.runtime) { %>
+        <span class="pt-footer__runtime" id="pt-runtime"></span>
+      <% } %>
+    </div>
+
+    <div class="pt-footer__bottom">
+      <span>&copy; <%= theme.footer.since ? `${theme.footer.since}-` : '' %><%= date(Date.now(), 'YYYY') %> <%= config.author %></span>
+      <% if (theme.footer.powered_by) { %>
+        <span>Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a></span>
+      <% } %>
+      <% if (theme.footer.theme_name) { %>
+        <span>Theme <a href="#" target="_blank">Pomelo</a></span>
+      <% } %>
+      <% if (theme.footer.icp) { %>
+        <span><%= theme.footer.icp %></span>
+      <% } %>
+    </div>
+  </div>
+</footer>

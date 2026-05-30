@@ -1,0 +1,116 @@
+// ===================================
+// Pomelo Theme — Header
+// ===================================
+@import '_variables'
+@import '_acrylic'
+
+.pt-header
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  z-index: $z-header
+  height: $header-height
+  acrylic-header()
+
+  &__inner
+    container()
+    height: 100%
+    flex-between()
+
+  &__logo
+    flex-center()
+    gap: $space-sm
+    color: $clr-text
+    text-decoration: none
+    font-weight: $font-wt-semibold
+    &:hover
+      text-decoration: none
+      color: $clr-primary
+
+    img
+      height: 32px
+      width: auto
+
+  &__title
+    font-size: $font-scale-base
+    white-space: nowrap
+
+  &__menu-btn
+    display: none
+    flex-direction: column
+    gap: 4px
+    background: none
+    border: none
+    cursor: pointer
+    padding: $space-xs
+
+    span
+      display: block
+      width: 20px
+      height: 1.5px
+      background: $clr-text
+      border-radius: 1px
+      transition: all $transition-fast
+
+.pt-nav
+  display: flex
+  align-items: center
+  gap: $space-xs
+
+  &__link
+    display: inline-flex
+    align-items: center
+    padding: $space-xs $space-sm
+    border-radius: $radius-md
+    font-size: $font-scale-sm
+    color: $clr-text-secondary
+    text-decoration: none
+    transition: color $transition-fast, background $transition-fast
+
+    &:hover
+      color: $clr-primary
+      background: $acrylic-cyan-tint
+      text-decoration: none
+
+    &.active
+      color: $clr-primary
+
+// ── Mobile Nav ──
+.pt-mobile-nav
+  display: none
+  position: fixed
+  top: $header-height
+  left: 0
+  right: 0
+  bottom: 0
+  z-index: $z-drawer
+  acrylic-drawer()
+  padding: $space-xl
+  flex-direction: column
+  gap: $space-sm
+
+  &__link
+    display: block
+    padding: $space-md
+    font-size: $font-scale-md
+    color: $clr-text
+    text-decoration: none
+    border-radius: $radius-md
+    transition: all $transition-fast
+
+    &:hover
+      background: $acrylic-cyan-tint
+      color: $clr-primary
+      text-decoration: none
+
+  &[aria-hidden="false"]
+    display: flex
+
+// ── Responsive ──
+mq-tablet()
+  .pt-nav
+    display: none
+
+  .pt-header__menu-btn
+    display: flex

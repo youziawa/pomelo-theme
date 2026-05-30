@@ -1,0 +1,6 @@
+<!-- Custom JS injection -->
+<%- theme.custom?.js || '' %>
+
+<% if (theme.effects && theme.effects.particles) { %>
+<script src="<%= url_for('/js/particles.js') %>"></script>
+<% } %>

@@ -1,0 +1,49 @@
+// ===================================
+// Pomelo Theme — Footer
+// ===================================
+@import '_variables'
+
+.pt-footer
+  border-top: 1px solid rgba(255, 255, 255, 0.05)
+  padding: $space-2xl 0 $space-xl
+  margin-top: auto
+  background: rgba(8, 8, 15, 0.6)
+
+  &__inner
+    container()
+    display: flex
+    flex-direction: column
+    gap: $space-md
+    align-items: center
+    text-align: center
+
+  &__brand
+    .pt-footer__title
+      font-size: $font-scale-base
+      font-weight: $font-wt-semibold
+
+    .pt-footer__desc
+      font-size: $font-scale-sm
+      color: $clr-text-secondary
+      margin-top: $space-xs
+
+  &__links
+    display: flex
+    gap: $space-lg
+    font-size: $font-scale-sm
+
+  &__runtime
+    color: $clr-text-secondary
+
+  &__bottom
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    gap: $space-md
+    font-size: $font-scale-xs
+    color: $clr-text-disabled
+
+    a
+      color: $clr-text-secondary
+      &:hover
+        color: $clr-primary

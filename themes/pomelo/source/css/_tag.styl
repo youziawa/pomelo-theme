@@ -1,0 +1,36 @@
+// ===================================
+// Pomelo Theme — Tag & Category
+// ===================================
+@import '_variables'
+
+.pt-tag
+  display: inline-block
+  padding: 2px $space-sm
+  border-radius: $radius-sm
+  font-size: $font-scale-xs
+  font-family: $font-code
+  color: $clr-primary
+  background: rgba(0, 255, 200, 0.08)
+  border: 1px solid rgba(0, 255, 200, 0.12)
+  transition: all $transition-fast
+  text-decoration: none
+
+  &:hover
+    background: rgba(0, 255, 200, 0.15)
+    border-color: rgba(0, 255, 200, 0.3)
+    color: $clr-primary
+    text-decoration: none
+
+  &--category
+    color: $clr-accent
+    background: rgba(255, 0, 136, 0.08)
+    border-color: rgba(255, 0, 136, 0.12)
+    &:hover
+      background: rgba(255, 0, 136, 0.15)
+      border-color: rgba(255, 0, 136, 0.3)
+
+.pt-tag-cloud
+  display: flex
+  flex-wrap: wrap
+  gap: $space-xs
+  align-items: center

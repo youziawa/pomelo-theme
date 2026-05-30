@@ -1,0 +1,26 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title><%= page.title ? `${page.title} - ${config.title}` : config.title %></title>
+
+<%- meta_generator() %>
+
+<link rel="icon" href="<%= url_for(theme.favicon || '/images/favicon.ico') %>">
+
+<!-- Stylesheet -->
+<%- css('css/style') %>
+
+<!-- Open Graph -->
+<meta property="og:title" content="<%= page.title || config.title %>">
+<meta property="og:type" content="<%= page.layout === 'post' ? 'article' : 'website' %>">
+<meta property="og:url" content="<%= full_url_for(page.path) %>">
+<meta property="og:site_name" content="<%= config.title %>">
+<% if (page.description || config.description) { %>
+<meta property="og:description" content="<%= page.description || config.description %>">
+<% } %>
+
+<!-- Canonical -->
+<link rel="canonical" href="<%= full_url_for(page.path) %>">
+
+<!-- Custom head injection -->
+<%- theme.custom?.head || '' %>

@@ -1,0 +1,89 @@
+<article class="pt-post pt-post--single">
+  <header class="pt-post__header">
+    <h1 class="pt-post__title"><%= page.title %></h1>
+
+    <div class="pt-post__meta">
+      <time datetime="<%= date(page.date, 'YYYY-MM-DD') %>">
+        <svg class="pt-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <%= date(page.date, 'YYYY-MM-DD') %>
+      </time>
+
+      <% if (theme.post.word_count) { %>
+        <span>
+          <svg class="pt-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <%= wordcount(page.content) %> words
+        </span>
+      <% } %>
+
+      <% if (theme.post.reading_time) { %>
+        <span>
+          <svg class="pt-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          ~<%= Math.max(1, Math.ceil(strip_html(page.content).length / 500)) %> min
+        </span>
+      <% } %>
+
+      <% if (page.updated && page.updated !== page.date) { %>
+        <span class="pt-post__updated">
+          Updated: <%= date(page.updated, 'YYYY-MM-DD') %>
+        </span>
+      <% } %>
+    </div>
+
+    <% if (page.categories && page.categories.length) { %>
+    <div class="pt-post__categories">
+      <% page.categories.each(function(cat){ %>
+        <a class="pt-tag pt-tag--category" href="<%= url_for(cat.path) %>"><%= cat.name %></a>
+      <% }) %>
+    </div>
+    <% } %>
+  </header>
+
+  <!-- TOC (if enabled) -->
+  <% if (theme.post.toc && page.toc && page.toc.length > 1) { %>
+    <details class="pt-toc">
+      <summary class="pt-toc__toggle">Contents</summary>
+      <nav class="pt-toc__nav">
+        <%- toc(page.content) %>
+      </nav>
+    </details>
+  <% } %>
+
+  <!-- Article Content -->
+  <div class="pt-post__content">
+    <%- page.content %>
+  </div>
+
+  <!-- Tags -->
+  <% if (page.tags && page.tags.length) { %>
+    <div class="pt-post__tags">
+      <% page.tags.each(function(tag){ %>
+        <a class="pt-tag" href="<%= url_for(tag.path) %>">#<%= tag.name %></a>
+      <% }) %>
+    </div>
+  <% } %>
+
+  <!-- Copyright -->
+  <% if (theme.post.copyright) { %>
+    <div class="pt-post__copyright pt-glass pt-glass--card">
+      <p><strong>Author:</strong> <%= config.author %></p>
+      <p><strong>Permalink:</strong> <a href="<%= full_url_for(page.path) %>"><%= full_url_for(page.path) %></a></p>
+      <p>This article is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></p>
+    </div>
+  <% } %>
+
+  <!-- Prev / Next -->
+  <nav class="pt-post__nav">
+    <% if (page.prev) { %>
+      <a class="pt-post__nav-prev" href="<%= url_for(page.prev.path) %>">
+        <span class="pt-post__nav-label">Previous</span>
+        <span class="pt-post__nav-title"><%= page.prev.title %></span>
+      </a>
+    <% } %>
+    <% if (page.next) { %>
+      <a class="pt-post__nav-next" href="<%= url_for(page.next.path) %>">
+        <span class="pt-post__nav-label">Next</span>
+        <span class="pt-post__nav-title"><%= page.next.title %></span>
+      </a>
+    <% } %>
+  </nav>
+</article>

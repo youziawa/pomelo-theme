@@ -1,0 +1,10 @@
+<div class="pt-widget pt-glass pt-glass--card pt-widget--tags">
+  <h3 class="pt-widget__title"><%= __('widget.tag_cloud') %></h3>
+  <div class="pt-tag-cloud">
+    <% site.tags.each(function(tag){ %>
+      <a class="pt-tag" href="<%= url_for(tag.path) %>" style="font-size: <%= 0.75 + tag.posts.length / site.tags.reduce((max, t) => Math.max(max, t.posts.length), 0) * 0.75 %>rem">
+        <%= tag.name %>
+      </a>
+    <% }) %>
+  </div>
+</div>

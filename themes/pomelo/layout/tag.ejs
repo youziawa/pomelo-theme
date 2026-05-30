@@ -1,0 +1,11 @@
+<div class="pt-page-header">
+  <h1 class="pt-page-header__title"><%= __('tags') %></h1>
+</div>
+
+<div class="pt-tag-cloud pt-glass pt-glass--card" style="padding:24px;border-radius:12px;margin-bottom:24px;">
+  <% site.tags.each(function(tag){ %>
+    <a class="pt-tag" href="<%= url_for(tag.path) %>" style="font-size: <%= 0.75 + tag.posts.length / site.tags.reduce((max, t) => Math.max(max, t.posts.length), 0) * 1 %>rem; margin:4px;">
+      <%= tag.name %>
+    </a>
+  <% }) %>
+</div>
