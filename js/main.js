@@ -31,7 +31,8 @@
 
     // ── Code Copy Button ──
     initCodeCopy() {
-      document.querySelectorAll('.highlight, pre').forEach(function (block) {
+      // Only target outermost containers — NOT nested pre inside .highlight
+      document.querySelectorAll('.pt-post__content .highlight, .pt-post__content > pre').forEach(function (block) {
         const btn = document.createElement('button')
         btn.className = 'code-copy-btn'
         btn.textContent = 'Copy'
