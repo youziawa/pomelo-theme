@@ -13,6 +13,7 @@
       this.initBackToTop()
       this.initReadingProgress()
       this.initFooterRuntime()
+      this.initGitHubWidget()
     },
 
     // ── Mobile Menu Toggle ──
@@ -30,7 +31,8 @@
 
     // ── Code Copy Button ──
     initCodeCopy() {
-      document.querySelectorAll('.highlight, pre').forEach(function (block) {
+      // Only target outermost containers — NOT nested pre inside .highlight
+      document.querySelectorAll('.pt-post__content .highlight, .pt-post__content > pre').forEach(function (block) {
         const btn = document.createElement('button')
         btn.className = 'code-copy-btn'
         btn.textContent = 'Copy'
@@ -102,6 +104,63 @@
       })
 
       document.body.appendChild(bar)
+    },
+
+    // ── GitHub Status Widget ──
+    initGitHubWidget() {
+      const widget = document.querySelector('.pt-widget--github')
+      if (!widget) return
+
+      const username = widget.dataset.githubUser
+      if (!username) return
+
+      const content = widget.querySelector('.pt-widget__content')
+      if (!content) return
+
+      // Show loading
+      content.innerHTML = '<p class="pt-text-sm" style="color:#9A9AB0">Loading...</p>'
+
+      // Fetch user profile
+      fetch('https://api.github.com/users/' + encodeURIComponent(username))
+        .then(function (res) {
+          if (!res.ok) throw new Error('GitHub API error: ' + res.status)
+          return res.json()
+        })
+        .then(function (user) {
+          var stats = [
+            { label: 'Repos', value: user.public_repos },
+            { label: 'Followers', value: user.followers },
+            { label: 'Following', value: user.following },
+            { label: 'Gists', value: user.public_gists }
+          ]
+
+          var html = ''
+          // Avatar + name
+          html += '<div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">'
+          html += '<img src="' + user.avatar_url + '" alt="" style="width:48px;height:48px;border-radius:50%;border:2px solid rgba(0,255,200,0.2)" loading="lazy">'
+          html += '<div>'
+          html += '<a href="https://github.com/' + user.login + '" target="_blank" rel="noopener" style="color:#00FFC8;font-weight:600;text-decoration:none;font-size:15px">@' + user.login + '</a>'
+          if (user.bio) {
+            html += '<p style="font-size:12px;color:#9A9AB0;margin-top:2px">' + user.bio + '</p>'
+          }
+          html += '</div></div>'
+
+          // Stats grid
+          html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">'
+          stats.forEach(function (s) {
+            html += '<div style="background:rgba(255,255,255,0.03);border-radius:8px;padding:8px;text-align:center">'
+            html += '<div style="font-size:18px;font-weight:700;color:#00FFC8">' + (s.value || 0) + '</div>'
+            html += '<div style="font-size:11px;color:#5A5A6E">' + s.label + '</div>'
+            html += '</div>'
+          })
+          html += '</div>'
+
+          content.innerHTML = html
+        })
+        .catch(function (err) {
+          console.error('GitHub widget error:', err)
+          content.innerHTML = '<p class="pt-text-sm" style="color:#5A5A6E">Could not load GitHub data.</p>'
+        })
     },
 
     // ── Footer Runtime Counter ──

@@ -7,7 +7,7 @@
 // Outer container mixin (shared by both simple pre and .highlight)
 code-block-shell()
   position: relative
-  margin: $space-lg 0
+  margin: $space-md 0 0
   border-radius: $radius-lg
   overflow-x: auto
   overflow-y: hidden
@@ -44,7 +44,7 @@ code-block-text()
 
   > code
     display: block
-    padding: $space-md $space-lg
+    padding: $space-md $space-lg $space-xs
     code-block-text()
 
 // ── Highlighted code blocks (with language → line numbers) ──
@@ -82,14 +82,14 @@ code-block-text()
     border-right: 1px solid rgba(255, 255, 255, 0.06)
 
     pre
-      padding: $space-md 0
+      padding: $space-md 0 $space-xs
       code-block-text()
 
   .code
     padding-left: $space-md
 
     pre, code
-      padding: $space-md $space-lg
+      padding: $space-md $space-lg $space-xs
       code-block-text()
 
 // Copy button
