@@ -987,7 +987,7 @@ th {
 .pt-timeline::before {
   content: "";
   position: absolute;
-  left: 4px;
+  left: 13px;
   top: 0;
   bottom: 0;
   width: 2px;
@@ -1003,7 +1003,7 @@ th {
 .pt-timeline__year::before {
   content: "";
   position: absolute;
-  left: -26px;
+  left: -25px;
   top: 50%;
   transform: translateY(-50%);
   width: 14px;
@@ -1024,7 +1024,7 @@ th {
 .pt-timeline__item::before {
   content: "";
   position: absolute;
-  left: -22px;
+  left: -21px;
   top: 50%;
   transform: translateY(-50%);
   width: 6px;
