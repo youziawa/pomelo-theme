@@ -14,6 +14,7 @@
       this.initReadingProgress()
       this.initFooterRuntime()
       this.initGitHubWidget()
+      this.initGalleryLightbox()
     },
 
     // ── Mobile Menu Toggle ──
@@ -104,6 +105,80 @@
       })
 
       document.body.appendChild(bar)
+    },
+
+    // ── Gallery Lightbox ──
+    initGalleryLightbox() {
+      const lightbox = document.getElementById('pt-lightbox')
+      const img = document.getElementById('pt-lightbox-img')
+      const caption = document.getElementById('pt-lightbox-caption')
+      const prevBtn = lightbox && lightbox.querySelector('.pt-lightbox__prev')
+      const nextBtn = lightbox && lightbox.querySelector('.pt-lightbox__next')
+      const closeBtn = lightbox && lightbox.querySelector('.pt-lightbox__close')
+
+      if (!lightbox || !img) return
+
+      let items = []
+      let currentIdx = 0
+
+      function show(idx) {
+        currentIdx = idx
+        var item = items[currentIdx]
+        img.src = item.href
+        img.alt = item.dataset.caption || ''
+        caption.textContent = item.dataset.caption || ''
+        lightbox.setAttribute('aria-hidden', 'false')
+        if (prevBtn) prevBtn.style.display = currentIdx > 0 ? '' : 'none'
+        if (nextBtn) nextBtn.style.display = currentIdx < items.length - 1 ? '' : 'none'
+      }
+
+      // Collect gallery items
+      items = Array.from(document.querySelectorAll('.pt-gallery-item'))
+
+      items.forEach(function (item, i) {
+        item.addEventListener('click', function (e) {
+          e.preventDefault()
+          show(i)
+        })
+      })
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function () {
+          lightbox.setAttribute('aria-hidden', 'true')
+        })
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function (e) {
+          e.stopPropagation()
+          if (currentIdx > 0) show(currentIdx - 1)
+        })
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function (e) {
+          e.stopPropagation()
+          if (currentIdx < items.length - 1) show(currentIdx + 1)
+        })
+      }
+
+      // Close on background click
+      lightbox.addEventListener('click', function (e) {
+        if (e.target === lightbox) lightbox.setAttribute('aria-hidden', 'true')
+      })
+
+      // Close on Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && lightbox.getAttribute('aria-hidden') === 'false') {
+          lightbox.setAttribute('aria-hidden', 'true')
+        }
+        if (e.key === 'ArrowLeft' && lightbox.getAttribute('aria-hidden') === 'false' && currentIdx > 0) {
+          show(currentIdx - 1)
+        }
+        if (e.key === 'ArrowRight' && lightbox.getAttribute('aria-hidden') === 'false' && currentIdx < items.length - 1) {
+          show(currentIdx + 1)
+        }
+      })
     },
 
     // ── GitHub Status Widget ──
