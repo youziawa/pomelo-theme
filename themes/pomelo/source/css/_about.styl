@@ -1,0 +1,64 @@
+// ===================================
+// Pomelo Theme — About Page
+// ===================================
+@import '_variables'
+@import '_acrylic'
+
+.pt-about
+  padding: $space-xl
+  border-radius: $radius-lg
+  acrylic-card()
+  acrylic-edge-highlight()
+
+  .pt-post__content
+    max-width: none
+    margin: 0
+
+  h2
+    font-size: $font-scale-md
+    margin: $space-lg 0 $space-md
+    padding-bottom: $space-xs
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06)
+
+  h3
+    font-size: $font-scale-base
+    margin: $space-md 0 $space-sm
+    color: $clr-primary
+
+  ul
+    list-style: disc
+    padding-left: $space-lg
+    margin: $space-sm 0
+
+  li
+    margin-bottom: $space-xs
+    color: $clr-text-secondary
+
+  a
+    color: $clr-primary
+    text-decoration: underline
+    text-decoration-color: rgba(0, 255, 200, 0.2)
+
+// ── About: Skill Bars ──
+.pt-skill
+  margin-bottom: $space-md
+
+  &__label
+    display: flex
+    justify-content: space-between
+    font-size: $font-scale-sm
+    margin-bottom: $space-xs
+    color: $clr-text-secondary
+
+  &__bar
+    height: 4px
+    border-radius: 2px
+    background: rgba(255, 255, 255, 0.06)
+    overflow: hidden
+
+  &__fill
+    height: 100%
+    border-radius: 2px
+    background: linear-gradient(90deg, $clr-primary, $clr-accent)
+    box-shadow: 0 0 8px rgba(0, 255, 200, 0.3)
+    transition: width 800ms cubic-bezier(0.34, 1.56, 0.64, 1)

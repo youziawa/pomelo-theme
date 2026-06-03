@@ -1,0 +1,40 @@
+// ===================================
+// Pomelo Theme — Pagination
+// ===================================
+@import '_variables'
+@import '_acrylic'
+
+.pt-pagination
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: $space-md
+  margin-top: $space-xl
+  padding-top: $space-lg
+  border-top: 1px solid rgba(255, 255, 255, 0.06)
+
+  &__btn
+    display: inline-flex
+    align-items: center
+    gap: $space-xs
+    padding: $space-sm $space-md
+    border-radius: $radius-md
+    font-size: $font-scale-sm
+    color: $clr-text-secondary
+    text-decoration: none
+    acrylic-card()
+    transition: all $transition-fast
+
+    &:hover
+      color: $clr-primary
+      border-color: rgba($clr-primary, 0.2)
+      text-decoration: none
+
+    &[aria-disabled="true"]
+      opacity: 0.3
+      pointer-events: none
+
+  &__info
+    font-size: $font-scale-sm
+    color: $clr-text-secondary
+    font-family: $font-code

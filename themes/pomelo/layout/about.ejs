@@ -1,7 +1,13 @@
-<div class="pt-page-header">
-  <h1 class="pt-page-header__title"><%= __('about') %></h1>
-</div>
+<div class="pt-layout pt-layout--right-sidebar">
+  <div class="pt-layout__content">
+    <div class="pt-about pt-glass pt-glass--card">
+      <div class="pt-post__content">
+        <%- page.content %>
+      </div>
+    </div>
+  </div>
 
-<div class="pt-about pt-glass pt-glass--card" style="padding:24px;border-radius:12px;">
-  <%- page.content %>
+  <aside class="pt-layout__sidebar">
+    <%- partial('_partial/sidebar', { config: config, theme: theme, site: site }) %>
+  </aside>
 </div>

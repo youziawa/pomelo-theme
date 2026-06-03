@@ -1,0 +1,43 @@
+// ===================================
+// Pomelo Theme — Category List
+// ===================================
+@import '_variables'
+@import '_acrylic'
+
+.pt-category-list
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr))
+  gap: $space-md
+
+.pt-category-card
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: $space-md $space-lg
+  border-radius: $radius-lg
+  text-decoration: none
+  acrylic-card()
+  transition: all $transition-fast
+
+  &:hover
+    transform: translateY(-2px)
+    box-shadow: $shadow-card-hover
+    border-color: rgba($clr-primary, 0.2)
+    text-decoration: none
+
+    .pt-category-card__name
+      color: $clr-primary
+
+  &__name
+    font-size: $font-scale-base
+    font-weight: $font-wt-semibold
+    color: $clr-text
+    transition: color $transition-fast
+
+  &__count
+    font-size: $font-scale-xs
+    font-family: $font-code
+    color: $clr-text-disabled
+    background: rgba(255, 255, 255, 0.05)
+    padding: 1px $space-sm
+    border-radius: $radius-sm

@@ -1,0 +1,95 @@
+// ===================================
+// Pomelo Theme — 404 Page
+// ===================================
+@import '_variables'
+@import '_acrylic'
+
+.pt-404
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  min-height: 60vh
+  text-align: center
+  padding: $space-3xl
+
+  &__glitch
+    position: relative
+    font-size: clamp(6rem, 15vw, 12rem)
+    font-weight: $font-wt-bold
+    line-height: 1
+    font-family: $font-code
+    color: $clr-primary
+    text-shadow: 0 0 20px rgba(0, 255, 200, 0.5), 0 0 60px rgba(0, 255, 200, 0.2)
+
+    // Glitch pseudo-elements
+    &::before, &::after
+      content: attr(data-text)
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+
+    &::before
+      color: $clr-accent
+      animation: glitch-1 2s infinite linear alternate-reverse
+      clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%)
+      text-shadow: 0 0 20px rgba(255, 0, 136, 0.5)
+
+    &::after
+      color: $clr-primary
+      animation: glitch-2 3s infinite linear alternate-reverse
+      clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%)
+      text-shadow: 0 0 20px rgba(0, 255, 200, 0.5)
+
+  &__subtitle
+    font-size: $font-scale-md
+    color: $clr-text
+    margin-top: $space-lg
+
+  &__hint
+    font-size: $font-scale-sm
+    color: $clr-text-secondary
+    margin-top: $space-sm
+
+  &__home
+    display: inline-block
+    margin-top: $space-xl
+    padding: $space-sm $space-xl
+    border-radius: $radius-md
+    font-size: $font-scale-base
+    color: $clr-bg
+    background: $clr-primary
+    text-decoration: none
+    transition: all $transition-fast
+    font-weight: $font-wt-semibold
+
+    &:hover
+      box-shadow: 0 0 20px rgba(0, 255, 200, 0.4)
+      text-decoration: none
+      color: $clr-bg
+
+@keyframes glitch-1
+  0%
+    transform: none
+  92%
+    transform: none
+  93%
+    transform: translate(-3px, 2px) skew(2deg)
+  94%
+    transform: translate(2px, -1px) skew(-1deg)
+  96%
+    transform: none
+
+@keyframes glitch-2
+  0%
+    transform: none
+  90%
+    transform: none
+  91%
+    transform: translate(3px, -1px) skew(1deg)
+  93%
+    transform: translate(-2px, 1px) skew(-2deg)
+  95%
+    transform: none

@@ -1,0 +1,106 @@
+// ===================================
+// Pomelo Theme — Gallery
+// ===================================
+@import '_variables'
+@import '_acrylic'
+
+.pt-gallery-grid
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr))
+  gap: $space-md
+  width: 100%
+
+.pt-gallery-item
+  border-radius: $radius-md
+  overflow: hidden
+  display: block
+  cursor: pointer
+  transition: transform $transition-base, box-shadow $transition-base
+
+  &:hover
+    transform: translateY(-2px)
+    box-shadow: $shadow-card-hover
+
+  img
+    width: 100%
+    height: 200px
+    object-fit: cover
+    border-radius: $radius-md
+    transition: transform $transition-slow
+
+  &:hover img
+    transform: scale(1.05)
+
+// ── Gallery Lightbox ──
+.pt-lightbox
+  display: none
+  position: fixed
+  inset: 0
+  z-index: $z-drawer
+  acrylic-modal()
+  flex-center()
+  padding: $space-3xl
+
+  &[aria-hidden="false"]
+    display: flex
+
+  &__img
+    max-width: 90vw
+    max-height: 85vh
+    border-radius: $radius-lg
+    object-fit: contain
+
+  &__close
+    position: absolute
+    top: $space-lg
+    right: $space-lg
+    width: 40px
+    height: 40px
+    border-radius: 50%
+    background: rgba(255, 255, 255, 0.06)
+    border: 1px solid rgba(255, 255, 255, 0.08)
+    color: $clr-text
+    font-size: 20px
+    cursor: pointer
+    flex-center()
+    transition: all $transition-fast
+
+    &:hover
+      background: rgba(255, 255, 255, 0.12)
+      color: $clr-primary
+
+  &__prev,
+  &__next
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    width: 44px
+    height: 44px
+    border-radius: 50%
+    background: rgba(255, 255, 255, 0.06)
+    border: 1px solid rgba(255, 255, 255, 0.08)
+    color: $clr-text
+    cursor: pointer
+    flex-center()
+    transition: all $transition-fast
+
+    &:hover
+      background: rgba(255, 255, 255, 0.12)
+      color: $clr-primary
+
+  &__prev
+    left: $space-lg
+
+  &__next
+    right: $space-lg
+
+  &__caption
+    position: absolute
+    bottom: $space-xl
+    left: 50%
+    transform: translateX(-50%)
+    font-size: $font-scale-sm
+    color: $clr-text-secondary
+    background: rgba(0, 0, 0, 0.5)
+    padding: $space-xs $space-md
+    border-radius: $radius-sm

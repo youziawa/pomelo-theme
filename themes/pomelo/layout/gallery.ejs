@@ -1,15 +1,32 @@
-<div class="pt-page-header">
-  <h1 class="pt-page-header__title"><%= __('gallery') %></h1>
+<div class="pt-layout pt-layout--right-sidebar">
+  <div class="pt-layout__content">
+    <div class="pt-page-header">
+      <h1 class="pt-page-header__title"><%= page.title || __('gallery') %></h1>
+    </div>
+
+    <div class="pt-gallery-grid">
+      <% if (theme.gallery && theme.gallery.images && theme.gallery.images.length) { %>
+        <% theme.gallery.images.forEach(function(img){ %>
+          <a class="pt-gallery-item" href="<%= img.src %>" data-caption="<%= img.caption || '' %>">
+            <img src="<%= img.src %>" alt="<%= img.caption || '' %>" loading="lazy">
+          </a>
+        <% }) %>
+      <% } else { %>
+        <p style="color:#9A9AB0;grid-column:1/-1;"><%= __('no_posts') %></p>
+      <% } %>
+    </div>
+  </div>
+
+  <aside class="pt-layout__sidebar">
+    <%- partial('_partial/sidebar', { config: config, theme: theme, site: site }) %>
+  </aside>
 </div>
 
-<div class="pt-gallery-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
-  <% if (theme.gallery && theme.gallery.images && theme.gallery.images.length) { %>
-    <% theme.gallery.images.forEach(function(img){ %>
-      <a class="pt-gallery-item" href="<%= img.src %>" data-caption="<%= img.caption || '' %>" style="border-radius:8px;overflow:hidden;display:block;">
-        <img src="<%= img.src %>" alt="<%= img.caption || '' %>" loading="lazy" style="width:100%;height:200px;object-fit:cover;border-radius:8px;">
-      </a>
-    <% }) %>
-  <% } else { %>
-    <p style="color:#9A9AB0;grid-column:1/-1;"><%= __('no_posts') %></p>
-  <% } %>
+<!-- Lightbox -->
+<div class="pt-lightbox" id="pt-lightbox" aria-hidden="true">
+  <button class="pt-lightbox__close" aria-label="Close">&times;</button>
+  <button class="pt-lightbox__prev" aria-label="Previous">&lsaquo;</button>
+  <img class="pt-lightbox__img" id="pt-lightbox-img" src="" alt="">
+  <button class="pt-lightbox__next" aria-label="Next">&rsaquo;</button>
+  <div class="pt-lightbox__caption" id="pt-lightbox-caption"></div>
 </div>

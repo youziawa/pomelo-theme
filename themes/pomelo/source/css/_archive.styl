@@ -1,0 +1,84 @@
+// ===================================
+// Pomelo Theme — Archive Timeline
+// ===================================
+@import '_variables'
+@import '_acrylic'
+
+.pt-timeline
+  position: relative
+  padding-left: $space-xl
+
+  // Vertical line
+  &::before
+    content: ""
+    position: absolute
+    left: 7px
+    top: 0
+    bottom: 0
+    width: 1px
+    background: linear-gradient(180deg,
+      rgba(0, 255, 200, 0.3) 0%,
+      rgba(0, 255, 200, 0.1) 50%,
+      rgba(0, 255, 200, 0.02) 100%)
+
+  &__year
+    position: relative
+    margin: $space-xl 0 $space-md
+    font-size: $font-scale-lg
+    font-weight: $font-wt-bold
+    neon-text($clr-primary)
+
+    &::before
+      content: ""
+      position: absolute
+      left: -27px
+      top: 50%
+      transform: translateY(-50%)
+      width: 14px
+      height: 14px
+      border-radius: 50%
+      background: $clr-primary
+      box-shadow: 0 0 10px rgba(0, 255, 200, 0.5), 0 0 30px rgba(0, 255, 200, 0.2)
+      border: 2px solid $clr-bg
+
+  &__item
+    position: relative
+    display: flex
+    align-items: baseline
+    gap: $space-md
+    padding: $space-sm 0
+    margin-bottom: $space-xs
+
+    &::before
+      content: ""
+      position: absolute
+      left: -22px
+      top: 50%
+      transform: translateY(-50%)
+      width: 6px
+      height: 6px
+      border-radius: 50%
+      background: rgba(255, 255, 255, 0.3)
+      transition: all $transition-fast
+
+    &:hover::before
+      background: $clr-primary
+      box-shadow: 0 0 8px rgba(0, 255, 200, 0.6)
+
+  &__date
+    flex-shrink: 0
+    width: 48px
+    font-size: $font-scale-xs
+    font-family: $font-code
+    color: $clr-text-secondary
+
+  &__title
+    font-size: $font-scale-sm
+    color: $clr-text
+    text-decoration: none
+    text-ellipsis()
+    transition: color $transition-fast
+
+    &:hover
+      color: $clr-primary
+      text-decoration: none

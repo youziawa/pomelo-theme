@@ -1,0 +1,52 @@
+// ===================================
+// Pomelo Theme — Friends Links
+// ===================================
+@import '_variables'
+@import '_acrylic'
+
+.pt-friends-grid
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr))
+  gap: $space-md
+  width: 100%
+
+.pt-friend-card
+  display: flex
+  align-items: center
+  gap: $space-md
+  padding: $space-md
+  border-radius: $radius-lg
+  text-decoration: none
+  color: inherit
+  acrylic-card()
+  acrylic-edge-highlight()
+  transition: transform $transition-base, box-shadow $transition-base, border-color $transition-base
+
+  &:hover
+    transform: translateY(-2px)
+    box-shadow: $shadow-card-hover
+    border-color: rgba($clr-primary, 0.2)
+    text-decoration: none
+
+  &__avatar
+    width: 48px
+    height: 48px
+    border-radius: 50%
+    flex-shrink: 0
+    border: 2px solid rgba(255, 255, 255, 0.06)
+
+  &__name
+    font-weight: $font-wt-semibold
+    font-size: $font-scale-sm
+    color: $clr-text
+    transition: color $transition-fast
+
+    .pt-friend-card:hover &
+      color: $clr-primary
+
+  &__desc
+    font-size: $font-scale-xs
+    color: $clr-text-secondary
+    margin-top: 2px
+    text-ellipsis()
+    max-width: 180px
