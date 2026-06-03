@@ -762,7 +762,7 @@ th {
 }
 .pt-post__content > pre {
   position: relative;
-  margin: 16px 0;
+  margin: 16px 0 8px;
   border-radius: 12px;
   overflow-x: auto;
   overflow-y: hidden;
@@ -798,7 +798,7 @@ th {
 }
 .pt-post__content > pre > code {
   display: block;
-  padding: 16px 24px;
+  padding: 16px 24px 8px;
   font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", "Consolas", monospace;
   font-size: 14px;
   line-height: 1.6;
@@ -808,7 +808,7 @@ th {
 }
 .pt-post__content .highlight {
   position: relative;
-  margin: 16px 0;
+  margin: 16px 0 8px;
   border-radius: 12px;
   overflow-x: auto;
   overflow-y: hidden;
@@ -873,7 +873,7 @@ th {
   border-right: 1px solid rgba(255,255,255,0.06);
 }
 .pt-post__content .highlight .gutter pre {
-  padding: 16px 0;
+  padding: 16px 0 8px;
   font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", "Consolas", monospace;
   font-size: 14px;
   line-height: 1.6;
@@ -886,7 +886,7 @@ th {
 }
 .pt-post__content .highlight .code pre,
 .pt-post__content .highlight .code code {
-  padding: 16px 24px;
+  padding: 16px 24px 8px;
   font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", "Consolas", monospace;
   font-size: 14px;
   line-height: 1.6;
