@@ -762,7 +762,7 @@ th {
 }
 .pt-post__content > pre {
   position: relative;
-  margin: 24px 0;
+  margin: 16px 0;
   border-radius: 12px;
   overflow-x: auto;
   overflow-y: hidden;
@@ -808,7 +808,7 @@ th {
 }
 .pt-post__content .highlight {
   position: relative;
-  margin: 24px 0;
+  margin: 16px 0;
   border-radius: 12px;
   overflow-x: auto;
   overflow-y: hidden;
