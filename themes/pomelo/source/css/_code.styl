@@ -4,70 +4,93 @@
 @import '_variables'
 @import '_acrylic'
 
-.pt-post__content
-  pre, .highlight
-    position: relative
-    margin: $space-lg 0
-    border-radius: $radius-lg
-    overflow: hidden
-    acrylic-card()
-    acrylic-tint-terminal()
-    acrylic-edge-highlight()
-    border-top: 1px solid rgba(255, 255, 255, 0.08)
+// Outer container mixin (shared by both simple pre and .highlight)
+code-block-shell()
+  position: relative
+  margin: $space-lg 0
+  border-radius: $radius-lg
+  overflow-x: auto
+  overflow-y: hidden
+  acrylic-card()
+  acrylic-tint-terminal()
+  acrylic-edge-highlight()
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05)
 
-    // macOS three dots
-    &::before
-      content: ""
-      display: block
-      height: 28px
-      background: rgba(8, 8, 15, 0.5)
-      padding: $space-sm $space-md
-      // Three dots via box-shadows
-      background-image:
-        radial-gradient(circle, #FF5F57 6px, transparent 6px),
-        radial-gradient(circle, #FEBC2E 6px, transparent 6px),
-        radial-gradient(circle, #28C840 6px, transparent 6px)
-      background-size: 12px 12px
-      background-position: 8px center, 28px center, 48px center
-      background-repeat: no-repeat
+  &::before
+    content: ""
+    display: block
+    height: 28px
+    background: rgba(8, 8, 15, 0.5)
+    background-image:
+      radial-gradient(circle, #FF5F57 6px, transparent 6px),
+      radial-gradient(circle, #FEBC2E 6px, transparent 6px),
+      radial-gradient(circle, #28C840 6px, transparent 6px)
+    background-size: 12px 12px
+    background-position: 8px center, 28px center, 48px center
+    background-repeat: no-repeat
 
-    // Language label (shown after dots)
-    .code-lang
-      position: absolute
-      top: 7px
-      right: $space-md
-      font-size: 11px
-      color: $clr-text-disabled
-      font-family: $font-code
-      z-index: 1
+// Code text styling
+code-block-text()
+  font-family: $font-code
+  font-size: 14px
+  line-height: $line-height-code
+  color: $clr-text
+  background: transparent
+  white-space: pre
 
-    // Code content
-    .code, pre, code
-      display: block
+// ── Simple code blocks (no language / no line numbers) ──
+.pt-post__content > pre
+  code-block-shell()
+
+  > code
+    display: block
+    padding: $space-md $space-lg
+    code-block-text()
+
+// ── Highlighted code blocks (with language → line numbers) ──
+.pt-post__content .highlight
+  code-block-shell()
+
+  .code-lang
+    position: absolute
+    top: -1px
+    right: $space-lg
+    font-size: 11px
+    font-family: $font-code
+    color: $clr-primary
+    background: rgba(0, 255, 200, 0.08)
+    border: 1px solid rgba(0, 255, 200, 0.2)
+    border-top: none
+    border-radius: 0 0 $radius-sm $radius-sm
+    padding: 2px $space-sm
+    z-index: 2
+    letter-spacing: 0.5px
+    text-transform: uppercase
+
+  table
+    margin: 0
+    border-collapse: collapse
+    width: 100%
+
+  .gutter
+    width: 3em
+    padding-right: $space-md
+    text-align: right
+    user-select: none
+    color: $clr-text-disabled
+    font-size: $font-scale-xs
+    border-right: 1px solid rgba(255, 255, 255, 0.06)
+
+    pre
+      padding: $space-md 0
+      code-block-text()
+
+  .code
+    padding-left: $space-md
+
+    pre, code
       padding: $space-md $space-lg
-      overflow-x: auto
-      font-family: $font-code
-      font-size: 14px
-      line-height: $line-height-code
-      color: $clr-text
-      background: transparent
-
-    // Line numbers via CSS counters
-    table
-      margin: 0
-      border-collapse: collapse
-
-    .gutter
-      width: 3em
-      padding-right: $space-md
-      text-align: right
-      user-select: none
-      color: $clr-text-disabled
-      font-size: $font-scale-xs
-      border-right: 1px solid rgba(255, 255, 255, 0.06)
-
-    .code
-      padding-left: $space-md
+      code-block-text()
 
 // Copy button
 .code-copy-btn

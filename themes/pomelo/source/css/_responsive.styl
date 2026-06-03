@@ -1,0 +1,72 @@
+// ===================================
+// Pomelo Theme — Responsive (imported LAST to override all)
+// ===================================
+@import '_variables'
+
+// ▼ Narrow (≤900px): sidebar drops below, cards fill viewport
+@media (max-width: 900px)
+  .pt-main
+    max-width: 100% !important
+    padding-left: $space-lg
+    padding-right: $space-lg
+
+  .pt-layout
+    grid-template-columns: 1fr !important
+    gap: $space-xl
+
+  .pt-layout--right-sidebar,
+  .pt-layout--left-sidebar
+    grid-template-columns: 1fr !important
+
+  .pt-layout__content
+    max-width: none !important
+    width: 100% !important
+
+  .pt-card-grid
+    width: 100% !important
+    max-width: none !important
+
+  .pt-post-card
+    width: 100% !important
+    max-width: none !important
+    min-width: 0 !important
+
+  .pt-layout__sidebar
+    width: 100% !important
+    max-width: 100% !important
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr))
+    gap: $space-md
+
+// ▼ Tablet (≤768px): tighter spacing, mobile header
++mq-tablet()
+  .pt-main
+    padding-top: "calc(%s + %s)" % ($header-height $space-lg)
+    padding-left: $space-md
+    padding-right: $space-md
+
+  .pt-layout
+    gap: $space-lg
+
+  .pt-layout__sidebar
+    grid-template-columns: 1fr
+
+  // Header
+  .pt-nav
+    display: none
+
+  .pt-header__menu-btn
+    display: flex
+
+// ▼ Mobile (≤640px): minimal
++mq-mobile()
+  .pt-main
+    padding-top: "calc(%s + %s)" % ($header-height $space-md)
+    padding-left: $space-sm
+    padding-right: $space-sm
+
+  .pt-page-header__title
+    font-size: $font-scale-md
+
+  .pt-layout
+    gap: $space-md

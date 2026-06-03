@@ -5,7 +5,7 @@
 
 // ── Core Acrylic Surface ──
 // Base mixin: all acrylic surfaces share this
-acrylic-base($blur = $blur-card, $opacity = 0.55, $bg = rgba(18, 18, 30, $opacity), $border = $acrylic-border)
+acrylic-base($blur = $blur-card, $opacity = 0.80, $bg = rgba(22, 22, 35, $opacity), $border = $acrylic-border)
   background: $bg
   backdrop-filter: blur($blur) saturate($saturate-acrylic)
   -webkit-backdrop-filter: blur($blur) saturate($saturate-acrylic)
@@ -13,7 +13,7 @@ acrylic-base($blur = $blur-card, $opacity = 0.55, $bg = rgba(18, 18, 30, $opacit
 
 // ── Acrylic Depth Tiers ──
 acrylic-card()
-  acrylic-base($blur-card, 0.55)
+  acrylic-base($blur-card, 0.80)
   box-shadow: inset 0 1px 0 $acrylic-highlight-top, $shadow-card
 
 acrylic-card-interactive()

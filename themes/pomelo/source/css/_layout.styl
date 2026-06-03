@@ -19,26 +19,27 @@
 
 // ── Two-Column Layout (main + sidebar) ──
 .pt-layout
-  display: flex
-  gap: $space-xl
+  display: grid
+  grid-template-columns: minmax(0, 720px) $sidebar-width
+  gap: $space-2xl                // 48px gap
   margin-top: $space-lg
 
   &--right-sidebar
-    flex-direction: row
+    grid-template-columns: minmax(0, 720px) $sidebar-width
 
   &--left-sidebar
-    flex-direction: row-reverse
+    grid-template-columns: $sidebar-width minmax(0, 720px)
 
 .pt-layout__content
-  flex: 1
-  min-width: 0  // prevent flex item overflow
+  min-width: 0
+  width: 100%
 
 .pt-layout__sidebar
+  min-width: 0
+  overflow: hidden
   width: $sidebar-width
+  max-width: $sidebar-width
   flex-shrink: 0
-
-  mq-tablet()
-    display: none
 
 // ── Page Header (archive/category/tag title) ──
 .pt-page-header
@@ -60,27 +61,5 @@
   display: grid
   grid-template-columns: 1fr
   gap: $space-lg
+  width: 100%
 
-// ── Responsive ──
-mq-tablet()
-  .pt-main
-    padding-top: "calc(%s + %s)" % ($header-height $space-lg)
-    padding-left: $space-md
-    padding-right: $space-md
-
-  .pt-layout
-    flex-direction: column
-    gap: $space-lg
-
-  .pt-layout__sidebar
-    display: block
-    width: 100%
-
-mq-mobile()
-  .pt-main
-    padding-top: "calc(%s + %s)" % ($header-height $space-md)
-    padding-left: $space-sm
-    padding-right: $space-sm
-
-  .pt-page-header__title
-    font-size: $font-scale-md

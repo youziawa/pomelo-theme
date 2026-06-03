@@ -23,8 +23,8 @@ acrylic:
   card_blur: 20
   header_blur: 28
   modal_blur: 48
-  card_opacity: 0.55
-  header_opacity: 0.70
+  card_opacity: 0.80
+  header_opacity: 0.82
   saturation: 130
   noise_texture: true
   edge_highlight: true
@@ -62,7 +62,7 @@ sidebar:
 
 # ── GitHub 状态 ──
 github:
-  username: your_github_username
+  username: youziawa
   show_pinned: true
   show_heatmap: true
   cache_time: 3600

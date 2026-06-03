@@ -102,5 +102,5 @@ theme: pomelo
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/youziawa/pomelo-theme.git
+  repo: git@github.com:youziawa/pomelo-theme.git
   branch: gh-pages
