@@ -293,15 +293,15 @@ th {
 }
 .pt-layout {
   display: grid;
-  grid-template-columns: minmax(0, 720px) 300px;
+  grid-template-columns: minmax(0, 860px) 300px;
   gap: 48px;
   margin-top: 24px;
 }
 .pt-layout--right-sidebar {
-  grid-template-columns: minmax(0, 720px) 300px;
+  grid-template-columns: minmax(0, 860px) 300px;
 }
 .pt-layout--left-sidebar {
-  grid-template-columns: 300px minmax(0, 720px);
+  grid-template-columns: 300px minmax(0, 860px);
 }
 .pt-layout__content {
   min-width: 0;
