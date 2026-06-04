@@ -294,7 +294,7 @@ th {
 .pt-layout {
   display: grid;
   grid-template-columns: minmax(0, 860px) 300px;
-  gap: 48px;
+  gap: 32px;
   margin-top: 24px;
 }
 .pt-layout--right-sidebar {
@@ -1923,15 +1923,21 @@ body.has-scanline::before {
     transform: translateY(4px);
   }
 }
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .pt-main {
+    width: 100% !important;
     max-width: 100% !important;
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .pt-header__inner,
+  .pt-footer__inner {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
   }
   .pt-layout {
     grid-template-columns: 1fr !important;
-    gap: 32px;
+    gap: 24px;
   }
   .pt-layout--right-sidebar,
   .pt-layout--left-sidebar {
@@ -1961,8 +1967,6 @@ body.has-scanline::before {
 @media (max-width: 768px) {
   .pt-main {
     padding-top: calc(56px + 24px);
-    padding-left: 16px;
-    padding-right: 16px;
   }
   .pt-layout {
     gap: 24px;
@@ -1980,8 +1984,16 @@ body.has-scanline::before {
 @media (max-width: 640px) {
   .pt-main {
     padding-top: calc(56px + 16px);
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .pt-header__inner,
+  .pt-footer__inner {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+  .pt-post-card {
+    border-radius: 0 !important;
   }
   .pt-page-header__title {
     font-size: 1.25rem;
