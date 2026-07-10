@@ -3,16 +3,28 @@
 // ===================================
 @import '_variables'
 
-// ▼ Narrow (≤900px): sidebar drops below, cards fill viewport
-@media (max-width: 900px)
+// ▼ Narrow (≤1024px): sidebar drops below, cards fill viewport
+@media (max-width: 1024px)
   .pt-main
+    width: 100% !important
     max-width: 100% !important
-    padding-left: $space-lg
-    padding-right: $space-lg
+    padding-left: 0 !important
+    padding-right: 0 !important
+
+  .pt-header__inner,
+  .pt-footer__inner
+    padding-left: $space-md !important
+    padding-right: $space-md !important
 
   .pt-layout
     grid-template-columns: 1fr !important
-    gap: $space-xl
+    gap: $space-lg
+    width: 100%
+    max-width: none
+    margin-left: 0
+    margin-right: 0
+    padding-left: $space-md
+    padding-right: $space-md
 
   .pt-layout--right-sidebar,
   .pt-layout--left-sidebar
@@ -21,15 +33,18 @@
   .pt-layout__content
     max-width: none !important
     width: 100% !important
+    min-width: 0
 
   .pt-card-grid
     width: 100% !important
     max-width: none !important
+    grid-template-columns: minmax(0, 1fr)
 
   .pt-post-card
     width: 100% !important
     max-width: none !important
     min-width: 0 !important
+    box-sizing: border-box
 
   .pt-layout__sidebar
     width: 100% !important
@@ -42,11 +57,11 @@
 +mq-tablet()
   .pt-main
     padding-top: "calc(%s + %s)" % ($header-height $space-lg)
-    padding-left: $space-md
-    padding-right: $space-md
 
   .pt-layout
     gap: $space-lg
+    padding-left: $space-md
+    padding-right: $space-md
 
   .pt-layout__sidebar
     grid-template-columns: 1fr
@@ -62,11 +77,36 @@
 +mq-mobile()
   .pt-main
     padding-top: "calc(%s + %s)" % ($header-height $space-md)
-    padding-left: $space-sm
-    padding-right: $space-sm
+    padding-left: 0 !important
+    padding-right: 0 !important
+
+  .pt-header__inner,
+  .pt-footer__inner
+    padding-left: $space-sm !important
+    padding-right: $space-sm !important
+
+  .pt-post-card
+    border-radius: 0 !important
+    border-left-width: 0
+    border-right-width: 0
+
+    &__cover
+      height: 180px
+
+    &__body
+      padding: $space-md
 
   .pt-page-header__title
     font-size: $font-scale-md
 
   .pt-layout
     gap: $space-md
+    padding-left: 0
+    padding-right: 0
+
+  .pt-card-grid
+    gap: $space-md
+
+@media (max-width: 420px)
+  .pt-post-card__cover
+    height: 160px

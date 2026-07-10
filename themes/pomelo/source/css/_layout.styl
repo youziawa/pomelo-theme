@@ -20,15 +20,15 @@
 // ── Two-Column Layout (main + sidebar) ──
 .pt-layout
   display: grid
-  grid-template-columns: minmax(0, 720px) $sidebar-width
-  gap: $space-2xl                // 48px gap
+  grid-template-columns: minmax(0, 860px) $sidebar-width
+  gap: $space-xl                 // 32px gap
   margin-top: $space-lg
 
   &--right-sidebar
-    grid-template-columns: minmax(0, 720px) $sidebar-width
+    grid-template-columns: minmax(0, 860px) $sidebar-width
 
   &--left-sidebar
-    grid-template-columns: $sidebar-width minmax(0, 720px)
+    grid-template-columns: $sidebar-width minmax(0, 860px)
 
 .pt-layout__content
   min-width: 0

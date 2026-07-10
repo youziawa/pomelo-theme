@@ -4,18 +4,26 @@
 @import '_variables'
 @import '_acrylic'
 
+// All positions relative to .pt-timeline left edge (0px)
+// Gutter: padding-left = 32px
+// Center alignment point: 16px
+//
+// Line:     left=15  width=2  →  15..17  center=16
+// Year dot: parent@32 + left=-23 + 14/2 = 32-23+7 = 16 ✓
+// Item dot: parent@32 + left=-19 + 6/2  = 32-19+3 = 16 ✓
+
 .pt-timeline
   position: relative
-  padding-left: $space-xl
+  padding-left: $space-xl              // 32px gutter
 
-  // Vertical line
+  // Vertical line — center at 16px
   &::before
     content: ""
     position: absolute
-    left: 7px
+    left: 15px
     top: 0
     bottom: 0
-    width: 1px
+    width: 2px
     background: linear-gradient(180deg,
       rgba(0, 255, 200, 0.3) 0%,
       rgba(0, 255, 200, 0.1) 50%,
@@ -28,10 +36,11 @@
     font-weight: $font-wt-bold
     neon-text($clr-primary)
 
+    // Year dot — center at 16px from timeline left
     &::before
       content: ""
       position: absolute
-      left: -27px
+      left: -23px
       top: 50%
       transform: translateY(-50%)
       width: 14px
@@ -49,10 +58,11 @@
     padding: $space-sm 0
     margin-bottom: $space-xs
 
+    // Item dot — center at 16px from timeline left
     &::before
       content: ""
       position: absolute
-      left: -22px
+      left: -19px
       top: 50%
       transform: translateY(-50%)
       width: 6px
