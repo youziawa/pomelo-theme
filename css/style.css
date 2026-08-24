@@ -1004,7 +1004,9 @@ th {
   padding: 2px 8px;
   border-radius: 4px;
   font-size: 0.75rem;
-  font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", "Consolas", monospace;
+  font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Hiragino Sans GB", sans-serif;
+  font-weight: 500;
+  line-height: 1.45;
   color: #00ffc8;
   background: rgba(0,255,200,0.08);
   border: 1px solid rgba(0,255,200,0.12);
