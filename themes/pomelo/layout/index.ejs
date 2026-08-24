@@ -23,6 +23,13 @@
 
                 <h2 class="pt-post-card__title"><%= post.title %></h2>
 
+                <div class="pt-post-card__text-meta">
+                  <time datetime="<%= date(post.date, 'YYYY-MM-DD') %>"><%= date(post.date, 'YYYY-MM-DD') %></time>
+                  <% if (theme.post.reading_time) { %>
+                    <span class="pt-post-card__reading-time">~<%= Math.max(1, Math.ceil(strip_html(post.content).length / 500)) %> min read</span>
+                  <% } %>
+                </div>
+
                 <% if (post.excerpt) { %>
                   <p class="pt-post-card__excerpt"><%= strip_html(post.excerpt).substring(0, 180) %>...</p>
                 <% } %>
@@ -35,7 +42,6 @@
                       <% }) %>
                     </div>
                   <% } %>
-                  <time datetime="<%= date(post.date, 'YYYY-MM-DD') %>"><%= date(post.date, 'YYYY-MM-DD') %></time>
                 </div>
               </div>
             <% } else { %>
