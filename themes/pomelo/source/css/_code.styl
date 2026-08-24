@@ -8,6 +8,7 @@
 code-block-shell()
   position: relative
   margin: $space-md 0 0
+  padding-top: 28px
   border-radius: $radius-lg
   overflow-x: auto
   overflow-y: hidden
@@ -16,9 +17,12 @@ code-block-shell()
   acrylic-edge-highlight()
   border-bottom: 1px solid rgba(255, 255, 255, 0.05)
 
-  &::before
+  &::after
     content: ""
-    display: block
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
     height: 28px
     background: rgba(8, 8, 15, 0.5)
     background-image:
@@ -44,6 +48,8 @@ code-block-text()
 
   > code
     display: block
+    position: relative
+    z-index: 1
     padding: $space-md $space-lg $space-xs
     code-block-text()
 
@@ -68,6 +74,8 @@ code-block-text()
     text-transform: uppercase
 
   table
+    position: relative
+    z-index: 1
     margin: 0
     border-collapse: collapse
     width: 100%
@@ -102,10 +110,12 @@ code-block-text()
 // Copy button
 .code-copy-btn
   position: absolute
-  top: 4px
+  top: 2px
   right: $space-md
-  padding: 3px $space-sm
+  height: 24px
+  padding: 0 $space-sm
   font-size: 11px
+  line-height: 1
   color: $clr-text-secondary
   background: rgba(255, 255, 255, 0.06)
   border: 1px solid rgba(255, 255, 255, 0.08)
@@ -131,13 +141,13 @@ code-block-text()
 
 .code-collapse-btn
   position: absolute
-  top: 4px
+  top: 2px
   right: $space-3xl
   display: flex
   align-items: center
   justify-content: center
-  width: 25px
-  height: 25px
+  width: 24px
+  height: 24px
   padding: 0
   border: 1px solid rgba(255, 255, 255, 0.08)
   border-radius: $radius-sm
