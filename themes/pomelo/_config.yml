@@ -5,7 +5,7 @@
 # ── 基础信息 ──
 avatar: /images/avatar.png
 favicon: /images/favicon.svg
-logo: /images/logo.svg
+logo: /images/favicon.svg
 
 # ── 色彩主题 ──
 theme_color:
