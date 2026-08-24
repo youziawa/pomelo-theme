@@ -28,3 +28,25 @@ widget:
 comment: Comments
 no_posts: No posts yet
 page_not_found: Page Not Found
+gallery_collection: Image Collection
+gallery_subtitle: Keep every scene worth revisiting with categories, search, and full-screen preview.
+gallery_image_count: "%d images"
+gallery_images: images
+gallery_controls: Gallery filters and search
+gallery_categories: Image categories
+gallery_all: All
+gallery_search: Search images
+gallery_search_placeholder: Search title, place, or category
+gallery_showing_all: "%d images collected"
+gallery_uncategorized: Uncategorized
+gallery_untitled: Untitled image
+gallery_no_results: No matching images found
+gallery_empty_title: The gallery is being curated
+gallery_empty_description: Add images in gallery.images in the theme configuration to begin your collection.
+gallery_preview: Image preview
+gallery_close: Close preview
+gallery_previous: Previous image
+gallery_next: Next image
+gallery_open_original: Open original
+gallery_copy_link: Copy image link
+gallery_copied: Copied

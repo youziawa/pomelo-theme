@@ -1,20 +1,78 @@
+<%
+  var gallery = theme.gallery || {};
+  var images = gallery.images || [];
+  var categories = [];
+  images.forEach(function (img) {
+    var category = img.category || __('gallery_uncategorized');
+    if (categories.indexOf(category) === -1) categories.push(category);
+  });
+%>
+
 <div class="pt-layout pt-layout--right-sidebar">
   <div class="pt-layout__content">
-    <div class="pt-page-header">
-      <h1 class="pt-page-header__title"><%= page.title || __('gallery') %></h1>
-    </div>
+    <header class="pt-gallery-header">
+      <div>
+        <p class="pt-gallery-header__eyebrow"><%= __('gallery_collection') %></p>
+        <h1 class="pt-page-header__title"><%= page.title || gallery.title || __('gallery') %></h1>
+        <% if (page.content) { %>
+          <div class="pt-gallery-header__intro"><%- page.content %></div>
+        <% } else { %>
+          <p class="pt-gallery-header__subtitle"><%= __('gallery_subtitle') %></p>
+        <% } %>
+      </div>
+      <div class="pt-gallery-header__count" aria-label="<%= __('gallery_image_count', images.length) %>">
+        <strong><%= images.length %></strong>
+        <span><%= __('gallery_images') %></span>
+      </div>
+    </header>
 
-    <div class="pt-gallery-grid">
-      <% if (theme.gallery && theme.gallery.images && theme.gallery.images.length) { %>
-        <% theme.gallery.images.forEach(function(img){ %>
-          <a class="pt-gallery-item" href="<%= img.src %>" data-caption="<%= img.caption || '' %>">
-            <img src="<%= img.src %>" alt="<%= img.caption || '' %>" loading="lazy">
+    <% if (images.length) { %>
+      <section class="pt-gallery-controls pt-glass" aria-label="<%= __('gallery_controls') %>">
+        <div class="pt-gallery-filters" role="toolbar" aria-label="<%= __('gallery_categories') %>">
+          <button class="pt-gallery-filter is-active" type="button" data-gallery-filter="all" aria-pressed="true"><%= __('gallery_all') %></button>
+          <% categories.forEach(function (category) { %>
+            <button class="pt-gallery-filter" type="button" data-gallery-filter="<%= category %>" aria-pressed="false"><%= category %></button>
+          <% }); %>
+        </div>
+        <label class="pt-gallery-search">
+          <span class="pt-visually-hidden"><%= __('gallery_search') %></span>
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="6"></circle><path d="m16 16 4 4"></path></svg>
+          <input type="search" id="pt-gallery-search" placeholder="<%= __('gallery_search_placeholder') %>" autocomplete="off">
+        </label>
+      </section>
+
+      <p class="pt-gallery-results" id="pt-gallery-results" aria-live="polite"><%= __('gallery_showing_all', images.length) %></p>
+
+      <div class="pt-gallery-grid" id="pt-gallery-grid">
+        <% images.forEach(function (img, index) {
+          var title = img.title || img.caption || __('gallery_untitled');
+          var category = img.category || __('gallery_uncategorized');
+          var searchText = [title, img.caption, category, img.location, img.date, img.description].filter(Boolean).join(' ').toLowerCase();
+        %>
+          <a class="pt-gallery-item<%= img.featured ? ' pt-gallery-item--featured' : '' %>" href="<%= img.src %>" data-gallery-item data-index="<%= index %>" data-title="<%= title %>" data-caption="<%= img.caption || '' %>" data-category="<%= category %>" data-date="<%= img.date || '' %>" data-location="<%= img.location || '' %>" data-description="<%= img.description || '' %>" data-search="<%= searchText %>">
+            <img src="<%= img.src %>" alt="<%= title %>" loading="lazy">
+            <span class="pt-gallery-item__shade"></span>
+            <span class="pt-gallery-item__content">
+              <span class="pt-gallery-item__category"><%= category %></span>
+              <strong class="pt-gallery-item__title"><%= title %></strong>
+              <% if (img.date || img.location) { %>
+                <span class="pt-gallery-item__meta"><%= [img.date, img.location].filter(Boolean).join(' · ') %></span>
+              <% } %>
+            </span>
+            <span class="pt-gallery-item__open" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"></path><path d="m21 3-7 7"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+            </span>
           </a>
-        <% }) %>
-      <% } else { %>
-        <p style="color:#9A9AB0;grid-column:1/-1;"><%= __('no_posts') %></p>
-      <% } %>
-    </div>
+        <% }); %>
+      </div>
+
+      <p class="pt-gallery-empty" id="pt-gallery-empty" hidden><%= __('gallery_no_results') %></p>
+    <% } else { %>
+      <div class="pt-gallery-empty pt-glass">
+        <strong><%= __('gallery_empty_title') %></strong>
+        <p><%= __('gallery_empty_description') %></p>
+      </div>
+    <% } %>
   </div>
 
   <aside class="pt-layout__sidebar">
@@ -22,11 +80,18 @@
   </aside>
 </div>
 
-<!-- Lightbox -->
-<div class="pt-lightbox" id="pt-lightbox" aria-hidden="true">
-  <button class="pt-lightbox__close" aria-label="Close">&times;</button>
-  <button class="pt-lightbox__prev" aria-label="Previous">&lsaquo;</button>
-  <img class="pt-lightbox__img" id="pt-lightbox-img" src="" alt="">
-  <button class="pt-lightbox__next" aria-label="Next">&rsaquo;</button>
-  <div class="pt-lightbox__caption" id="pt-lightbox-caption"></div>
+<div class="pt-lightbox" id="pt-lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="<%= __('gallery_preview') %>" data-original-label="<%= __('gallery_open_original') %>" data-copy-label="<%= __('gallery_copy_link') %>" data-copied-label="<%= __('gallery_copied') %>">
+  <button class="pt-lightbox__close" type="button" aria-label="<%= __('gallery_close') %>"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 6-12 12"></path><path d="m6 6 12 12"></path></svg></button>
+  <button class="pt-lightbox__prev" type="button" aria-label="<%= __('gallery_previous') %>"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"></path></svg></button>
+  <figure class="pt-lightbox__figure">
+    <img class="pt-lightbox__img" id="pt-lightbox-img" src="" alt="">
+    <figcaption class="pt-lightbox__details">
+      <div class="pt-lightbox__heading"><span class="pt-lightbox__category" id="pt-lightbox-category"></span><span class="pt-lightbox__counter" id="pt-lightbox-counter"></span></div>
+      <strong id="pt-lightbox-title"></strong>
+      <p id="pt-lightbox-description"></p>
+      <div class="pt-lightbox__meta" id="pt-lightbox-meta"></div>
+      <div class="pt-lightbox__actions"><a id="pt-lightbox-original" target="_blank" rel="noopener"></a><button id="pt-lightbox-copy" type="button"></button></div>
+    </figcaption>
+  </figure>
+  <button class="pt-lightbox__next" type="button" aria-label="<%= __('gallery_next') %>"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"></path></svg></button>
 </div>

@@ -28,3 +28,25 @@ widget:
 comment: 评论
 no_posts: 暂无文章
 page_not_found: 页面未找到
+gallery_collection: 图像收藏
+gallery_subtitle: 用分类、关键词和全屏预览，留住每一段值得回看的光线。
+gallery_image_count: 共 %d 张图片
+gallery_images: 张图片
+gallery_controls: 相册筛选与搜索
+gallery_categories: 图片分类
+gallery_all: 全部
+gallery_search: 搜索图片
+gallery_search_placeholder: 搜索标题、地点或分类
+gallery_showing_all: 已收录 %d 张图片
+gallery_uncategorized: 未分类
+gallery_untitled: 未命名图片
+gallery_no_results: 没有找到匹配的图片
+gallery_empty_title: 相册正在整理中
+gallery_empty_description: 在主题配置的 gallery.images 中添加图片，即可开始构建你的收藏。
+gallery_preview: 图片预览
+gallery_close: 关闭预览
+gallery_previous: 上一张图片
+gallery_next: 下一张图片
+gallery_open_original: 打开原图
+gallery_copy_link: 复制图片链接
+gallery_copied: 已复制

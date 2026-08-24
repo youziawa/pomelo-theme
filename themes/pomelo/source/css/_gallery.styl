@@ -4,89 +4,418 @@
 @import '_variables'
 @import '_acrylic'
 
+.pt-visually-hidden
+  position: absolute
+  width: 1px
+  height: 1px
+  padding: 0
+  margin: -1px
+  overflow: hidden
+  clip: rect(0, 0, 0, 0)
+  white-space: nowrap
+  border: 0
+
+.pt-gallery-header
+  display: flex
+  align-items: flex-end
+  justify-content: space-between
+  gap: $space-lg
+  margin-bottom: $space-xl
+
+  .pt-page-header__title
+    text-align: left
+
+  &__eyebrow
+    color: $clr-primary
+    font-family: $font-code
+    font-size: $font-scale-xs
+    margin-bottom: $space-sm
+
+  &__subtitle,
+  &__intro
+    max-width: 52ch
+    color: $clr-text-secondary
+    font-size: $font-scale-sm
+    line-height: $line-height-body
+    margin-top: $space-sm
+
+  &__intro > :first-child
+    margin-top: 0
+
+  &__intro > :last-child
+    margin-bottom: 0
+
+  &__count
+    min-width: 88px
+    padding: $space-md
+    border-radius: $radius-lg
+    text-align: center
+    acrylic-card()
+
+    strong,
+    span
+      display: block
+
+    strong
+      color: $clr-primary
+      font-family: $font-code
+      font-size: $font-scale-lg
+      line-height: 1
+
+    span
+      color: $clr-text-secondary
+      font-size: $font-scale-xs
+      margin-top: $space-xs
+
+.pt-gallery-controls
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: $space-md
+  padding: $space-sm
+  border-radius: $radius-lg
+  margin-bottom: $space-md
+  acrylic-card()
+
+.pt-gallery-filters
+  display: flex
+  flex-wrap: wrap
+  gap: $space-xs
+
+.pt-gallery-filter
+  appearance: none
+  border: 1px solid transparent
+  border-radius: $radius-md
+  background: transparent
+  color: $clr-text-secondary
+  cursor: pointer
+  font: inherit
+  font-size: $font-scale-sm
+  line-height: 1.25
+  padding: $space-sm $space-md
+  transition: background $transition-fast, border-color $transition-fast, color $transition-fast
+
+  &:hover,
+  &:focus-visible
+    color: $clr-text
+    background: rgba(255, 255, 255, 0.05)
+    outline: none
+
+  &.is-active
+    background: rgba($clr-primary, 0.12)
+    border-color: rgba($clr-primary, 0.22)
+    color: $clr-primary
+
+.pt-gallery-search
+  display: flex
+  align-items: center
+  gap: $space-sm
+  min-width: 208px
+  padding: 0 $space-md
+  color: $clr-text-secondary
+  background: rgba(0, 0, 0, 0.18)
+  border: 1px solid rgba(255, 255, 255, 0.08)
+  border-radius: $radius-md
+  transition: border-color $transition-fast, box-shadow $transition-fast
+
+  &:focus-within
+    border-color: rgba($clr-primary, 0.45)
+    box-shadow: 0 0 0 3px rgba($clr-primary, 0.08)
+
+  svg
+    width: 16px
+    height: 16px
+    flex: 0 0 auto
+
+  input
+    width: 100%
+    min-height: 38px
+    border: 0
+    outline: 0
+    background: transparent
+    color: $clr-text
+    font: inherit
+    font-size: $font-scale-sm
+
+    &::placeholder
+      color: $clr-text-disabled
+
+.pt-gallery-results
+  min-height: 18px
+  color: $clr-text-secondary
+  font-family: $font-code
+  font-size: $font-scale-xs
+  margin-bottom: $space-md
+
 .pt-gallery-grid
   display: grid
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr))
+  grid-auto-flow: dense
   gap: $space-md
   width: 100%
 
 .pt-gallery-item
-  border-radius: $radius-md
-  overflow: hidden
+  position: relative
   display: block
-  cursor: pointer
-  transition: transform $transition-base, box-shadow $transition-base
+  min-height: 192px
+  overflow: hidden
+  border: 1px solid rgba(255, 255, 255, 0.08)
+  border-radius: $radius-lg
+  background: $clr-bg-elevated
+  box-shadow: $shadow-card
+  color: $clr-text
+  cursor: zoom-in
+  isolation: isolate
+  transition: transform $transition-base, border-color $transition-base, box-shadow $transition-base
 
-  &:hover
+  &[hidden]
+    display: none
+
+  &--featured
+    grid-column: span 2
+    grid-row: span 2
+    min-height: 400px
+
+  &:hover,
+  &:focus-visible
     transform: translateY(-2px)
+    border-color: rgba($clr-primary, 0.3)
     box-shadow: $shadow-card-hover
+    outline: none
+
+    img
+      transform: scale(1.05)
+
+    .pt-gallery-item__open
+      opacity: 1
+      transform: translateY(0)
 
   img
+    position: absolute
+    inset: 0
     width: 100%
-    height: 200px
+    height: 100%
     object-fit: cover
-    border-radius: $radius-md
     transition: transform $transition-slow
 
-  &:hover img
-    transform: scale(1.05)
+  &__shade
+    position: absolute
+    inset: 0
+    z-index: 1
+    background: linear-gradient(180deg, rgba(8, 8, 15, 0.02) 32%, rgba(8, 8, 15, 0.84) 100%)
 
-// ── Gallery Lightbox ──
+  &__content
+    position: absolute
+    z-index: 2
+    left: $space-md
+    right: $space-md
+    bottom: $space-md
+    display: grid
+    gap: $space-xs
+
+  &__category
+    color: $clr-primary
+    font-family: $font-code
+    font-size: $font-scale-xs
+
+  &__title,
+  &__meta
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+
+  &__title
+    font-size: $font-scale-base
+    font-weight: $font-wt-semibold
+    line-height: $line-height-heading
+
+  &__meta
+    color: rgba($clr-text, 0.72)
+    font-size: $font-scale-xs
+
+  &__open
+    position: absolute
+    z-index: 2
+    top: $space-md
+    right: $space-md
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 34px
+    height: 34px
+    border: 1px solid rgba(255, 255, 255, 0.16)
+    border-radius: $radius-md
+    background: rgba(8, 8, 15, 0.55)
+    backdrop-filter: blur(10px)
+    opacity: 0
+    transform: translateY(-4px)
+    transition: opacity $transition-fast, transform $transition-fast
+
+    svg
+      width: 16px
+      height: 16px
+
+.pt-gallery-empty
+  min-height: 132px
+  display: grid
+  place-content: center
+  gap: $space-sm
+  padding: $space-xl
+  border-radius: $radius-lg
+  color: $clr-text-secondary
+  text-align: center
+
+  strong
+    color: $clr-text
+    font-size: $font-scale-md
+
 .pt-lightbox
   display: none
   position: fixed
   inset: 0
-  z-index: $z-drawer
+  z-index: $z-modal
+  align-items: center
+  justify-content: center
+  padding: $space-xl $space-3xl
   acrylic-modal()
-  flex-center()
-  padding: $space-3xl
 
   &[aria-hidden="false"]
     display: flex
 
+  &__figure
+    display: grid
+    grid-template-columns: minmax(0, 1fr) minmax(230px, 320px)
+    width: min(1120px, 100%)
+    max-height: calc(100vh - 96px)
+    margin: 0
+    overflow: hidden
+    border: 1px solid rgba(255, 255, 255, 0.12)
+    border-radius: $radius-xl
+    background: rgba(8, 8, 15, 0.7)
+    box-shadow: $shadow-modal
+
   &__img
-    max-width: 90vw
-    max-height: 85vh
-    border-radius: $radius-lg
+    width: 100%
+    height: min(72vh, 720px)
     object-fit: contain
+    background: #050509
 
-  &__close
-    position: absolute
-    top: $space-lg
-    right: $space-lg
-    width: 40px
-    height: 40px
-    border-radius: 50%
-    background: rgba(255, 255, 255, 0.06)
+  &__details
+    display: flex
+    flex-direction: column
+    min-width: 0
+    padding: $space-xl
+    background: rgba(22, 22, 35, 0.86)
+
+    strong
+      color: $clr-text
+      font-size: $font-scale-md
+      line-height: $line-height-heading
+      overflow-wrap: anywhere
+
+    p
+      color: $clr-text-secondary
+      font-size: $font-scale-sm
+      line-height: $line-height-body
+      margin-top: $space-md
+
+      &:empty
+        display: none
+
+  &__heading,
+  &__meta,
+  &__actions
+    display: flex
+    align-items: center
+
+  &__heading
+    justify-content: space-between
+    gap: $space-sm
+    margin-bottom: $space-md
+
+  &__category
+    color: $clr-primary
+    font-family: $font-code
+    font-size: $font-scale-xs
+
+  &__counter
+    color: $clr-text-disabled
+    font-family: $font-code
+    font-size: $font-scale-xs
+
+  &__meta
+    flex-wrap: wrap
+    gap: $space-sm
+    margin-top: $space-lg
+    color: $clr-text-secondary
+    font-size: $font-scale-xs
+
+    &:empty
+      display: none
+
+  &__meta span
+    padding: $space-xs $space-sm
     border: 1px solid rgba(255, 255, 255, 0.08)
+    border-radius: $radius-sm
+    background: rgba(255, 255, 255, 0.04)
+
+  &__actions
+    flex-wrap: wrap
+    gap: $space-sm
+    margin-top: auto
+    padding-top: $space-xl
+
+  &__actions a,
+  &__actions button,
+  &__close,
+  &__prev,
+  &__next
+    border: 1px solid rgba(255, 255, 255, 0.12)
     color: $clr-text
-    font-size: 20px
     cursor: pointer
-    flex-center()
-    transition: all $transition-fast
+    transition: background $transition-fast, border-color $transition-fast, color $transition-fast
 
-    &:hover
-      background: rgba(255, 255, 255, 0.12)
+    &:hover,
+    &:focus-visible
+      border-color: rgba($clr-primary, 0.45)
+      background: rgba($clr-primary, 0.1)
       color: $clr-primary
+      outline: none
 
+  &__actions a,
+  &__actions button
+    border-radius: $radius-md
+    background: rgba(255, 255, 255, 0.04)
+    font: inherit
+    font-size: $font-scale-xs
+    padding: $space-sm $space-md
+    text-decoration: none
+
+  &__close,
   &__prev,
   &__next
     position: absolute
+    z-index: 1
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 42px
+    height: 42px
+    border-radius: $radius-full
+    background: rgba(8, 8, 15, 0.64)
+
+    svg
+      width: 20px
+      height: 20px
+
+  &__close
+    top: $space-lg
+    right: $space-lg
+
+  &__prev,
+  &__next
     top: 50%
     transform: translateY(-50%)
-    width: 44px
-    height: 44px
-    border-radius: 50%
-    background: rgba(255, 255, 255, 0.06)
-    border: 1px solid rgba(255, 255, 255, 0.08)
-    color: $clr-text
-    cursor: pointer
-    flex-center()
-    transition: all $transition-fast
-
-    &:hover
-      background: rgba(255, 255, 255, 0.12)
-      color: $clr-primary
 
   &__prev
     left: $space-lg
@@ -94,13 +423,74 @@
   &__next
     right: $space-lg
 
-  &__caption
-    position: absolute
-    bottom: $space-xl
-    left: 50%
-    transform: translateX(-50%)
-    font-size: $font-scale-sm
-    color: $clr-text-secondary
-    background: rgba(0, 0, 0, 0.5)
-    padding: $space-xs $space-md
-    border-radius: $radius-sm
+.pt-lightbox-open
+  overflow: hidden
+
+@media (max-width: 768px)
+  .pt-gallery-header
+    align-items: flex-start
+    flex-direction: column
+
+  .pt-gallery-controls
+    align-items: stretch
+    flex-direction: column
+
+  .pt-gallery-search
+    width: 100%
+    min-width: 0
+
+  .pt-lightbox
+    padding: $space-xl $space-md
+
+    &__figure
+      grid-template-columns: 1fr
+      max-height: calc(100vh - 48px)
+      overflow-y: auto
+
+    &__img
+      height: min(58vh, 520px)
+
+    &__details
+      padding: $space-lg
+
+    &__prev,
+    &__next
+      top: 29vh
+
+    &__prev
+      left: $space-md
+
+    &__next
+      right: $space-md
+
+@media (max-width: 480px)
+  .pt-gallery-grid
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+    gap: $space-sm
+
+  .pt-gallery-item
+    min-height: 164px
+    border-radius: $radius-md
+
+    &--featured
+      grid-column: span 2
+      min-height: 250px
+
+    &__content
+      left: $space-sm
+      right: $space-sm
+      bottom: $space-sm
+
+    &__open
+      display: none
+
+  .pt-gallery-filter
+    padding: $space-sm
+
+  .pt-lightbox
+    &__close
+      top: $space-sm
+      right: $space-sm
+
+    &__actions
+      padding-top: $space-lg

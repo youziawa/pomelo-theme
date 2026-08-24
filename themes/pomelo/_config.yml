@@ -72,6 +72,8 @@ gallery:
   enable: true
   title: 相册
   layout: masonry
+  # 每张图片除 src 外，还可选配置 title、caption、category、date、location、description、featured
+  # featured: true 会在桌面网格中占用更大的展示面积
   images: []
 
 # ── 友链 ──
