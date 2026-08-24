@@ -132,6 +132,7 @@
       let lastTrigger = null
       let activeCategory = 'all'
       let touchStartX = 0
+      let isOpen = false
 
       const allItems = Array.from(document.querySelectorAll('[data-gallery-item]'))
       const filters = Array.from(document.querySelectorAll('[data-gallery-filter]'))
@@ -177,14 +178,21 @@
         original.href = item.href
         original.textContent = lightbox.dataset.originalLabel
         copyBtn.textContent = lightbox.dataset.copyLabel
+        const wasOpen = isOpen
         lightbox.setAttribute('aria-hidden', 'false')
         document.body.classList.add('pt-lightbox-open')
+        isOpen = true
+        if (!wasOpen && window.history && window.history.pushState) {
+          window.history.pushState({ ptLightbox: true }, '', window.location.href)
+        }
         closeBtn.focus()
       }
 
       function close() {
+        if (!isOpen) return
         lightbox.setAttribute('aria-hidden', 'true')
         document.body.classList.remove('pt-lightbox-open')
+        isOpen = false
         if (lastTrigger) lastTrigger.focus()
       }
 
@@ -214,6 +222,10 @@
 
       if (closeBtn) {
         closeBtn.addEventListener('click', close)
+        closeBtn.addEventListener('pointerup', function (e) {
+          e.preventDefault()
+          close()
+        })
       }
 
       if (prevBtn) {
@@ -246,6 +258,10 @@
         if (e.key === 'ArrowRight' && lightbox.getAttribute('aria-hidden') === 'false') {
           show(currentIdx + 1)
         }
+      })
+
+      window.addEventListener('popstate', function () {
+        if (isOpen) close()
       })
 
       if (copyBtn) {
