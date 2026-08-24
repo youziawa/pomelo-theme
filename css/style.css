@@ -606,13 +606,6 @@ th {
   align-items: center;
   gap: 4px;
 }
-.pt-post-card__categories {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 4px;
-  line-height: 1;
-}
 .pt-post-card--text {
   min-height: 238px;
 }
@@ -1053,13 +1046,16 @@ th {
   border: 1px solid rgba(0,255,200,0.1);
 }
 .pt-tag {
-  display: inline-block;
-  padding: 2px 8px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 8px;
   border-radius: 4px;
   font-size: 0.75rem;
   font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Hiragino Sans GB", sans-serif;
   font-weight: 500;
-  line-height: 1.45;
+  line-height: 1;
+  vertical-align: middle;
   color: #00ffc8;
   background: rgba(0,255,200,0.08);
   border: 1px solid rgba(0,255,200,0.12);
