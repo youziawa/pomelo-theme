@@ -9,6 +9,7 @@ tags:
   - 排版
   - 代码高亮
 thumbnail: /images/avatar-default.svg
+card_style: text
 ---
 
 一篇技术文章不需要很花哨，但需要让读者一眼分清结论、步骤、代码和补充信息。Pomelo 的正文宽度、行高和标题层级都按长文阅读做了约束。

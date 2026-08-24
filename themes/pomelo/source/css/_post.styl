@@ -82,6 +82,52 @@
     flex-wrap: wrap
     gap: $space-xs
 
+  &--text
+    min-height: 238px
+
+    .pt-post-card__link
+      display: flex
+      min-height: inherit
+
+    .pt-post-card__body
+      display: flex
+      flex: 1
+      flex-direction: column
+      padding: $space-xl
+
+    .pt-post-card__section
+      display: flex
+      align-items: center
+      gap: $space-sm
+      color: $clr-text-secondary
+      font-size: $font-scale-sm
+      font-weight: $font-wt-medium
+
+      svg
+        width: 16px
+        height: 16px
+        color: $clr-primary
+
+    .pt-post-card__title
+      font-size: $font-scale-lg
+      margin: $space-lg 0 $space-md
+
+    .pt-post-card__excerpt
+      margin-bottom: $space-lg
+      -webkit-line-clamp: 2
+
+    .pt-post-card__meta
+      justify-content: space-between
+      gap: $space-md
+      margin: auto 0 0
+
+      time
+        flex-shrink: 0
+        white-space: nowrap
+
+    .pt-post-card__tags
+      min-width: 0
+
 // ── Post Detail (single post page) ──
 .pt-post--single
   content-width()

@@ -9,6 +9,7 @@ tags:
   - Stylus
   - Design Token
 thumbnail: /images/avatar-default.svg
+card_style: text
 ---
 
 Pomelo 的颜色、间距、圆角、层级和动效都集中在设计 Token 中。定制时优先调整 token，再针对单个组件补充规则，这样不会破坏全站的一致性。

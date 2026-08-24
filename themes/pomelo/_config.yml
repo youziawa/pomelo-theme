@@ -101,6 +101,9 @@ post:
   related_posts: true
   reading_time: true
   word_count: true
+  # 首页文章卡片默认样式：image（图片型）/ text（纯文本型）
+  # 单篇文章可在 Front Matter 通过 card_style: image 或 text 覆盖
+  card_style: image
 
 # ── 二次元模块 ──
 anime:

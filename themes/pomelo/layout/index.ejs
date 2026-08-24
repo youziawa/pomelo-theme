@@ -2,50 +2,81 @@
 <div class="pt-layout pt-layout--right-sidebar">
   <div class="pt-layout__content">
     <div class="pt-card-grid">
-      <% page.posts.each(function(post){ %>
-        <article class="pt-post-card pt-glass pt-glass--card pt-glass--interactive">
+      <% page.posts.each(function(post){
+        var cardStyle = post.card_style || (theme.post && theme.post.card_style) || 'image';
+        cardStyle = cardStyle === 'text' ? 'text' : 'image';
+        var primaryCategory = null;
+        if (post.categories && post.categories.length) {
+          post.categories.each(function(cat) {
+            if (!primaryCategory) primaryCategory = cat;
+          });
+        }
+      %>
+        <article class="pt-post-card pt-post-card--<%= cardStyle %> pt-glass pt-glass--card pt-glass--interactive">
           <a class="pt-post-card__link" href="<%= url_for(post.path) %>">
-            <% if (post.thumbnail || post.banner) { %>
-              <div class="pt-post-card__cover">
-                <img src="<%= url_for(post.thumbnail || post.banner) %>" alt="<%= post.title %>" loading="lazy">
-              </div>
-            <% } %>
+            <% if (cardStyle === 'text') { %>
+              <div class="pt-post-card__body">
+                <div class="pt-post-card__section">
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"></path></svg>
+                  <span><%= primaryCategory ? primaryCategory.name : 'Article' %></span>
+                </div>
 
-            <div class="pt-post-card__body">
-              <h2 class="pt-post-card__title"><%= post.title %></h2>
+                <h2 class="pt-post-card__title"><%= post.title %></h2>
 
-              <% if (post.excerpt) { %>
-                <p class="pt-post-card__excerpt"><%= strip_html(post.excerpt).substring(0, 160) %>...</p>
-              <% } %>
-
-              <div class="pt-post-card__meta">
-                <time datetime="<%= date(post.date, 'YYYY-MM-DD') %>">
-                  <%= date(post.date, 'YYYY-MM-DD') %>
-                </time>
-
-                <% if (theme.post.reading_time) { %>
-                  <span class="pt-post-card__reading-time">
-                    ~<%= Math.max(1, Math.ceil(strip_html(post.content).length / 500)) %> min read
-                  </span>
+                <% if (post.excerpt) { %>
+                  <p class="pt-post-card__excerpt"><%= strip_html(post.excerpt).substring(0, 180) %>...</p>
                 <% } %>
 
-                <% if (post.categories && post.categories.length) { %>
-                  <span class="pt-post-card__categories">
-                    <% post.categories.each(function(cat){ %>
-                      <span class="pt-tag pt-tag--category"><%= cat.name %></span>
-                    <% }) %>
-                  </span>
-                <% } %>
+                <div class="pt-post-card__meta">
+                  <% if (post.tags && post.tags.length) { %>
+                    <div class="pt-post-card__tags">
+                      <% post.tags.each(function(tag){ %>
+                        <span class="pt-tag"><%= tag.name %></span>
+                      <% }) %>
+                    </div>
+                  <% } %>
+                  <time datetime="<%= date(post.date, 'YYYY-MM-DD') %>"><%= date(post.date, 'YYYY-MM-DD') %></time>
+                </div>
               </div>
-
-              <% if (post.tags && post.tags.length) { %>
-                <div class="pt-post-card__tags">
-                  <% post.tags.each(function(tag){ %>
-                    <span class="pt-tag"><%= tag.name %></span>
-                  <% }) %>
+            <% } else { %>
+              <% if (post.thumbnail || post.banner) { %>
+                <div class="pt-post-card__cover">
+                  <img src="<%= url_for(post.thumbnail || post.banner) %>" alt="<%= post.title %>" loading="lazy">
                 </div>
               <% } %>
-            </div>
+
+              <div class="pt-post-card__body">
+                <h2 class="pt-post-card__title"><%= post.title %></h2>
+
+                <% if (post.excerpt) { %>
+                  <p class="pt-post-card__excerpt"><%= strip_html(post.excerpt).substring(0, 160) %>...</p>
+                <% } %>
+
+                <div class="pt-post-card__meta">
+                  <time datetime="<%= date(post.date, 'YYYY-MM-DD') %>"><%= date(post.date, 'YYYY-MM-DD') %></time>
+
+                  <% if (theme.post.reading_time) { %>
+                    <span class="pt-post-card__reading-time">~<%= Math.max(1, Math.ceil(strip_html(post.content).length / 500)) %> min read</span>
+                  <% } %>
+
+                  <% if (post.categories && post.categories.length) { %>
+                    <span class="pt-post-card__categories">
+                      <% post.categories.each(function(cat){ %>
+                        <span class="pt-tag pt-tag--category"><%= cat.name %></span>
+                      <% }) %>
+                    </span>
+                  <% } %>
+                </div>
+
+                <% if (post.tags && post.tags.length) { %>
+                  <div class="pt-post-card__tags">
+                    <% post.tags.each(function(tag){ %>
+                      <span class="pt-tag"><%= tag.name %></span>
+                    <% }) %>
+                  </div>
+                <% } %>
+              </div>
+            <% } %>
           </a>
         </article>
       <% }) %>
