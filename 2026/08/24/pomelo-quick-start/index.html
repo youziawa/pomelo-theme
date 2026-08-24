@@ -105,14 +105,14 @@
       
         <span>
           <svg class="pt-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          437 words
+          542 words
         </span>
       
 
       
         <span>
           <svg class="pt-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          ~2 min
+          ~3 min
         </span>
       
 
@@ -181,6 +181,13 @@
 </tbody></table>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># themes/pomelo/_config.yml</span></span><br><span class="line"><span class="attr">github:</span></span><br><span class="line">  <span class="attr">username:</span> <span class="string">your_github_username</span></span><br><span class="line"></span><br><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">Home:</span> <span class="string">/</span></span><br><span class="line">  <span class="attr">Archives:</span> <span class="string">/archives/</span></span><br><span class="line">  <span class="attr">Gallery:</span> <span class="string">/gallery/</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="选择首页卡片样式"><a href="#选择首页卡片样式" class="headerlink" title="选择首页卡片样式"></a>选择首页卡片样式</h2><p>首页文章卡片支持图片型和纯文本型两种展示。默认样式在主题配置中设置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post:</span></span><br><span class="line">  <span class="attr">card_style:</span> <span class="string">image</span> <span class="comment"># image 或 text</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以在文章 Front Matter 中单独覆盖默认值：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">card_style:</span> <span class="string">text</span></span><br></pre></td></tr></table></figure>
+
+<p>图片型适合有封面图的内容，纯文本型会突出分类、标题、摘要、阅读时间与标签，适合笔记和短文。</p>
 <h2 id="创建第一篇文章"><a href="#创建第一篇文章" class="headerlink" title="创建第一篇文章"></a>创建第一篇文章</h2><p>新建 Markdown 文件，或使用 Hexo 命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx hexo new <span class="string">&quot;my-first-post&quot;</span></span><br></pre></td></tr></table></figure>
 
