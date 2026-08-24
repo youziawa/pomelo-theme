@@ -1648,8 +1648,8 @@ th {
 .pt-lightbox__close,
 .pt-lightbox__prev,
 .pt-lightbox__next {
-  position: absolute;
-  z-index: 1;
+  position: fixed;
+  z-index: 50;
   display: flex;
   align-items: center;
   justify-content: center;
