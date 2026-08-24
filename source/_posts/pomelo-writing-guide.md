@@ -8,7 +8,6 @@ tags:
   - Markdown
   - 排版
   - 代码高亮
-thumbnail: /images/avatar-default.svg
 card_style: text
 ---
 

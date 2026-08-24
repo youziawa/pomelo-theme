@@ -8,7 +8,7 @@ tags:
   - Gallery
   - 友链
   - 侧边栏
-thumbnail: /images/logo.svg
+thumbnail: /images/post-cover.svg
 ---
 
 除了文章列表，Pomelo 还提供相册、友链、归档、分类和标签页面。它们共享同一套亚克力面板、间距和交互状态，因此配置时更像是在补充内容，而不是重新搭一个页面。

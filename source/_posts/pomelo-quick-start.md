@@ -8,7 +8,7 @@ tags:
   - Hexo
   - 配置
   - 入门
-thumbnail: /images/logo.svg
+thumbnail: /images/post-cover.svg
 ---
 
 Pomelo 是一个以深色亚克力和克制霓虹为主调的 Hexo 主题。这篇文章从最短路径开始，带你确认站点、主题和本地预览都已经就绪。

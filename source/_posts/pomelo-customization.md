@@ -8,7 +8,6 @@ tags:
   - CSS
   - Stylus
   - Design Token
-thumbnail: /images/avatar-default.svg
 card_style: text
 ---
 
