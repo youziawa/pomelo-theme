@@ -77,7 +77,11 @@ gallery:
   images: []
 
 # ── 友链 ──
-friends: []
+friends:
+  - name: 柚子小栈
+    url: https://www.youziawa.top
+    avatar: https://www.youziawa.top/favicon.ico
+    description: 记录编程与技术学习的个人笔记。
 
 # ── 评论系统 ──
 comments:

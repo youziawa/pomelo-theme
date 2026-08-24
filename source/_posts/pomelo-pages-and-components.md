@@ -39,13 +39,13 @@ gallery:
 
 ```yaml
 friends:
-  - name: 示例博客
-    url: https://example.com
-    avatar: https://example.com/avatar.png
-    description: 写技术，也记录日常。
+  - name: 柚子小栈
+    url: https://www.youziawa.top
+    avatar: https://www.youziawa.top/favicon.ico
+    description: 记录编程与技术学习的个人笔记。
 ```
 
-头像和说明不宜过长。卡片的重点是名称、识别图和一句准确的描述，链接会在新标签页打开。
+头像和说明不宜过长。卡片的重点是名称、识别图和一句准确的描述，链接会在新标签页打开。保存配置并重新生成站点后，就能在 `/friends/` 页面看到新增的卡片。
 
 ## 调整侧边栏
 

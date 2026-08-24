@@ -52,6 +52,23 @@ menu:
   Gallery: /gallery/
 ```
 
+## 选择首页卡片样式
+
+首页文章卡片支持图片型和纯文本型两种展示。默认样式在主题配置中设置：
+
+```yaml
+post:
+  card_style: image # image 或 text
+```
+
+也可以在文章 Front Matter 中单独覆盖默认值：
+
+```yaml
+card_style: text
+```
+
+图片型适合有封面图的内容，纯文本型会突出分类、标题、摘要、阅读时间与标签，适合笔记和短文。
+
 ## 创建第一篇文章
 
 新建 Markdown 文件，或使用 Hexo 命令：
