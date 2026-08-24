@@ -916,7 +916,7 @@ th {
 .code-copy-btn {
   position: absolute;
   top: 2px;
-  right: 16px;
+  right: 48px;
   height: 24px;
   padding: 0 8px;
   font-size: 11px;
@@ -947,7 +947,7 @@ th {
 .code-collapse-btn {
   position: absolute;
   top: 2px;
-  right: 64px;
+  right: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
