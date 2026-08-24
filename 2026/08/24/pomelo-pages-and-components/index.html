@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>配置 Gallery、友链与侧边栏组件 - Pomelo</title>
+
+<meta name="generator" content="Hexo 7.3.0">
+
+<link rel="icon" href="/pomelo-theme/images/favicon.ico">
+
+<!-- Stylesheet -->
+
+<link rel="stylesheet" href="/pomelo-theme/css/style.css">
+
+
+<!-- Open Graph -->
+<meta property="og:title" content="配置 Gallery、友链与侧边栏组件">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://youziawa.github.io/pomelo-theme/2026/08/24/pomelo-pages-and-components/">
+<meta property="og:site_name" content="Pomelo">
+
+<meta property="og:description" content="A tech blog powered by Pomelo theme">
+
+
+<!-- Canonical -->
+<link rel="canonical" href="https://youziawa.github.io/pomelo-theme/2026/08/24/pomelo-pages-and-components/">
+
+<!-- Custom head injection -->
+
+
+</head>
+<body class="has-grid has-noise has-scanline">
+  <div class="pt-site">
+    <header class="pt-header pt-glass pt-glass--header">
+  <div class="pt-header__inner">
+    <!-- Logo / Site Title -->
+    <a class="pt-header__logo" href="/pomelo-theme/">
+      
+        <img src="/pomelo-theme/images/logo.svg" alt="Pomelo" height="32">
+      
+      <span class="pt-header__title">Pomelo</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="pt-nav" aria-label="Main navigation">
+      
+        <a class="pt-nav__link" href="/pomelo-theme/">Home</a>
+      
+        <a class="pt-nav__link" href="/pomelo-theme/archives/">Archives</a>
+      
+        <a class="pt-nav__link" href="/pomelo-theme/categories/">Categories</a>
+      
+        <a class="pt-nav__link" href="/pomelo-theme/tags/">Tags</a>
+      
+        <a class="pt-nav__link" href="/pomelo-theme/friends/">Friends</a>
+      
+        <a class="pt-nav__link" href="/pomelo-theme/gallery/">Gallery</a>
+      
+        <a class="pt-nav__link" href="/pomelo-theme/about/">About</a>
+      
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button class="pt-header__menu-btn" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Navigation (hidden by default) -->
+<nav class="pt-mobile-nav" aria-hidden="true">
+  
+    <a class="pt-mobile-nav__link" href="/pomelo-theme/">Home</a>
+  
+    <a class="pt-mobile-nav__link" href="/pomelo-theme/archives/">Archives</a>
+  
+    <a class="pt-mobile-nav__link" href="/pomelo-theme/categories/">Categories</a>
+  
+    <a class="pt-mobile-nav__link" href="/pomelo-theme/tags/">Tags</a>
+  
+    <a class="pt-mobile-nav__link" href="/pomelo-theme/friends/">Friends</a>
+  
+    <a class="pt-mobile-nav__link" href="/pomelo-theme/gallery/">Gallery</a>
+  
+    <a class="pt-mobile-nav__link" href="/pomelo-theme/about/">About</a>
+  
+</nav>
+
+
+    <main class="pt-main">
+      <article class="pt-post pt-post--single">
+  <header class="pt-post__header">
+    <h1 class="pt-post__title">配置 Gallery、友链与侧边栏组件</h1>
+
+    <div class="pt-post__meta">
+      <time datetime="2026-08-24">
+        <svg class="pt-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        2026-08-24
+      </time>
+
+      
+        <span>
+          <svg class="pt-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          407 words
+        </span>
+      
+
+      
+        <span>
+          <svg class="pt-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          ~2 min
+        </span>
+      
+
+      
+        <span class="pt-post__updated">
+          Updated: 2026-08-24
+        </span>
+      
+    </div>
+
+    
+    <div class="pt-post__categories">
+      
+        <a class="pt-tag pt-tag--category" href="/pomelo-theme/categories/%E4%B8%BB%E9%A2%98%E6%95%99%E7%A8%8B/">主题教程</a>
+      
+        <a class="pt-tag pt-tag--category" href="/pomelo-theme/categories/%E4%B8%BB%E9%A2%98%E6%95%99%E7%A8%8B/%E9%A1%B5%E9%9D%A2%E7%BB%84%E4%BB%B6/">页面组件</a>
+      
+    </div>
+    
+  </header>
+
+  <!-- TOC (if enabled) -->
+  
+
+  <!-- Article Content -->
+  <div class="pt-post__content">
+    <p>除了文章列表，Pomelo 还提供相册、友链、归档、分类和标签页面。它们共享同一套亚克力面板、间距和交互状态，因此配置时更像是在补充内容，而不是重新搭一个页面。</p>
+<h2 id="Gallery-相册"><a href="#Gallery-相册" class="headerlink" title="Gallery 相册"></a>Gallery 相册</h2><p>在主题配置的 <code>gallery.images</code> 中添加图片。旧配置只写 <code>src</code> 和 <code>caption</code> 也能正常显示；补充分类、地点和描述后，相册会自动提供筛选、搜索和详情信息。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">gallery:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">title:</span> <span class="string">相册</span></span><br><span class="line">  <span class="attr">images:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">src:</span> <span class="string">/images/gallery/night-terminal.jpg</span></span><br><span class="line">      <span class="attr">title:</span> <span class="string">深夜终端</span></span><br><span class="line">      <span class="attr">category:</span> <span class="string">桌面</span></span><br><span class="line">      <span class="attr">date:</span> <span class="number">2026-08-24</span></span><br><span class="line">      <span class="attr">location:</span> <span class="string">Hangzhou</span></span><br><span class="line">      <span class="attr">description:</span> <span class="string">编译完成后，屏幕留下的一点安静亮光。</span></span><br><span class="line">      <span class="attr">featured:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>点击图片会进入预览。可以使用左右方向键、滑动手势、<kbd>Esc</kbd> 或关闭按钮浏览和退出；详情面板还能打开原图或复制图片链接。</p>
+<h2 id="友链卡片"><a href="#友链卡片" class="headerlink" title="友链卡片"></a>友链卡片</h2><p>友链按数组顺序展示，适合把长期关注的站点整理成一面简洁的卡片墙：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">friends:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">示例博客</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">https://example.com</span></span><br><span class="line">    <span class="attr">avatar:</span> <span class="string">https://example.com/avatar.png</span></span><br><span class="line">    <span class="attr">description:</span> <span class="string">写技术，也记录日常。</span></span><br></pre></td></tr></table></figure>
+
+<p>头像和说明不宜过长。卡片的重点是名称、识别图和一句准确的描述，链接会在新标签页打开。</p>
+<h2 id="调整侧边栏"><a href="#调整侧边栏" class="headerlink" title="调整侧边栏"></a>调整侧边栏</h2><p>侧边栏组件通过 <code>sidebar.widgets</code> 排序。推荐从最有信息价值的组件开始：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sidebar:</span></span><br><span class="line">  <span class="attr">position:</span> <span class="string">right</span></span><br><span class="line">  <span class="attr">widgets:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">github-status</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">recent-posts</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">tag-cloud</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">category-list</span></span><br></pre></td></tr></table></figure>
+
+<p>在窄屏下，侧边栏会自动排到内容下方，不会挤压文章和相册网格。页面保持一列时，图片卡片也会随可用宽度调整展示面积。</p>
+
+  </div>
+
+  <!-- Tags -->
+  
+    <div class="pt-post__tags">
+      
+        <a class="pt-tag" href="/pomelo-theme/tags/Gallery/">#Gallery</a>
+      
+        <a class="pt-tag" href="/pomelo-theme/tags/%E5%8F%8B%E9%93%BE/">#友链</a>
+      
+        <a class="pt-tag" href="/pomelo-theme/tags/%E4%BE%A7%E8%BE%B9%E6%A0%8F/">#侧边栏</a>
+      
+    </div>
+  
+
+  <!-- Copyright -->
+  
+    <div class="pt-post__copyright pt-glass pt-glass--card">
+      <p><strong>Author:</strong> Pomelo</p>
+      <p><strong>Permalink:</strong> <a href="https://youziawa.github.io/pomelo-theme/2026/08/24/pomelo-pages-and-components/">https://youziawa.github.io/pomelo-theme/2026/08/24/pomelo-pages-and-components/</a></p>
+      <p>This article is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></p>
+    </div>
+  
+
+  <!-- Prev / Next -->
+  <nav class="pt-post__nav">
+    
+      <a class="pt-post__nav-prev" href="/pomelo-theme/2026/08/24/pomelo-customization/">
+        <span class="pt-post__nav-label">Previous</span>
+        <span class="pt-post__nav-title">用设计 Token 定制 Pomelo 的视觉风格</span>
+      </a>
+    
+    
+      <a class="pt-post__nav-next" href="/pomelo-theme/2026/08/24/pomelo-writing-guide/">
+        <span class="pt-post__nav-label">Next</span>
+        <span class="pt-post__nav-title">用 Markdown 写出层次清晰的文章</span>
+      </a>
+    
+  </nav>
+</article>
+
+    </main>
+
+    <footer class="pt-footer">
+  <div class="pt-footer__inner">
+    <div class="pt-footer__brand">
+      <span class="pt-footer__title">Pomelo</span>
+      
+        <p class="pt-footer__desc">A tech blog powered by Pomelo theme</p>
+      
+    </div>
+
+    <div class="pt-footer__links">
+      
+        <span class="pt-footer__runtime" id="pt-runtime"></span>
+      
+    </div>
+
+    <div class="pt-footer__bottom">
+      <span>&copy; 2024-2026 Pomelo</span>
+      
+        <span>Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a></span>
+      
+      
+        <span>Theme <a href="#" target="_blank">Pomelo</a></span>
+      
+      
+    </div>
+  </div>
+</footer>
+
+  </div>
+
+  <!-- Theme JS -->
+  
+<script src="/pomelo-theme/js/main.js"></script>
+
+
+  <!-- Custom JS injection -->
+
+
+
+<script src="/pomelo-theme/js/particles.js"></script>
+
+
+</body>
+</html>
