@@ -603,7 +603,15 @@ th {
 .pt-post-card__tags {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 4px;
+}
+.pt-post-card__categories {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  line-height: 1;
 }
 .pt-post-card--text {
   min-height: 238px;
