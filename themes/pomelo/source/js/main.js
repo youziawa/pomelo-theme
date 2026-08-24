@@ -34,8 +34,22 @@
     initCodeCopy() {
       // Only target outermost containers — NOT nested pre inside .highlight
       document.querySelectorAll('.pt-post__content .highlight, .pt-post__content > pre').forEach(function (block) {
+        const collapseBtn = document.createElement('button')
+        collapseBtn.className = 'code-collapse-btn'
+        collapseBtn.type = 'button'
+        collapseBtn.setAttribute('aria-label', 'Collapse code block')
+        collapseBtn.setAttribute('aria-expanded', 'true')
+        collapseBtn.innerHTML = '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>'
+        collapseBtn.addEventListener('click', function () {
+          const isCollapsed = block.classList.toggle('is-collapsed')
+          collapseBtn.setAttribute('aria-expanded', String(!isCollapsed))
+          collapseBtn.setAttribute('aria-label', isCollapsed ? 'Expand code block' : 'Collapse code block')
+          collapseBtn.classList.toggle('is-collapsed', isCollapsed)
+        })
+
         const btn = document.createElement('button')
         btn.className = 'code-copy-btn'
+        btn.type = 'button'
         btn.textContent = 'Copy'
         btn.addEventListener('click', function () {
           let code = ''
@@ -59,6 +73,7 @@
             }, 2000)
           })
         })
+        block.appendChild(collapseBtn)
         block.appendChild(btn)
       })
     },
